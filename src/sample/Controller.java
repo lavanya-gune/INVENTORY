@@ -23,8 +23,8 @@ import java.util.Objects;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
-import org.krysalis.barcode4j.impl.code128.Code128Bean;
-import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
+//import org.krysalis.barcode4j.impl.code128.Code128Bean;
+//import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 
 public class Controller implements Initializable {
     private Stage stage;
@@ -202,47 +202,47 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void GenerateBarCode(ActionEvent actionEvent) {
-        try {
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-            Alert alert = new Alert(type, "");
-
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
-
-            alert.getDialogPane().setContentText("Do you want to confirm?");
-
-            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }
-            Code128Bean code128 = new Code128Bean();
-            String image_name = Productcode.getText() + ".png";
-            String myString = Productcode.getText();
-            code128.setHeight(15f);
-            code128.setModuleWidth(0.3);
-            code128.setQuietZone(10);
-            code128.doQuietZone(true);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-            code128.generateBarcode(canvas, myString);
-            canvas.finish();
-            //write to png file
-            FileOutputStream fos = new FileOutputStream("C:\\Users\\gopal2\\Downloads\\barcode4j" + image_name);
-            fos.write(baos.toByteArray());
-            fos.flush();
-            fos.close();
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    }
+//    public void GenerateBarCode(ActionEvent actionEvent) {
+//        try {
+//            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+//
+//            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+//            Alert alert = new Alert(type, "");
+//
+//            alert.initModality(Modality.APPLICATION_MODAL);
+//            alert.initOwner(stage);
+//
+//            alert.getDialogPane().setContentText("Do you want to confirm?");
+//
+//            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+//            Optional<ButtonType> result = alert.showAndWait();
+//            if (result.get() == ButtonType.OK) {
+//                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+//                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                scene = new Scene(root);
+//                stage.setScene(scene);
+//                stage.show();
+//            }
+//            Code128Bean code128 = new Code128Bean();
+//            String image_name = Productcode.getText() + ".png";
+//            String myString = Productcode.getText();
+//            code128.setHeight(15f);
+//            code128.setModuleWidth(0.3);
+//            code128.setQuietZone(10);
+//            code128.doQuietZone(true);
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+//            code128.generateBarcode(canvas, myString);
+//            canvas.finish();
+//            //write to png file
+//            FileOutputStream fos = new FileOutputStream("C:\\Users\\gopal2\\Downloads\\barcode4j" + image_name);
+//            fos.write(baos.toByteArray());
+//            fos.flush();
+//            fos.close();
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//        }
+//    }
 
     public void goDELETE_PUBLIC(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DELETE_PUBLIC.fxml")));
