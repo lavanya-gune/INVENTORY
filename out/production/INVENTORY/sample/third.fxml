@@ -8,22 +8,17 @@
     <children>
         <Button layoutX="450.0" layoutY="350.0" mnemonicParsing="false" onAction="#goDelete" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="DELETE ITEMS" textFill="WHITE">
             <font>
-                <Font name="Arial Black" size="25.0" />
+                <Font name="Arial Black" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="450.0" layoutY="250.0" mnemonicParsing="false" onAction="#goAddItem" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="ADD ITEMS" textFill="WHITE">
+        <Button layoutX="450.0" layoutY="250.0" mnemonicParsing="false" onAction="#AddItem" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="ADD ITEMS" textFill="WHITE">
             <font>
-                <Font name="Arial Black" size="25.0" />
+                <Font name="Arial Black" size="14.0" />
             </font>
         </Button>
       <Button fx:id="back" mnemonicParsing="false" onAction="#goLogin" prefHeight="46.0" prefWidth="115.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
          <font>
             <Font name="System Bold" size="21.0" />
          </font></Button>
-      <Button fx:id="HOME" layoutX="1196.0" mnemonicParsing="false" onAction="#goSample" prefHeight="46.0" prefWidth="93.0" style="-fx-background-color: #C4FCF0;" text="HOME" textAlignment="JUSTIFY" textFill="#005575">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Button>
     </children>
 </AnchorPane>

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="650.0" minWidth="1290.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C4FCF0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller" fx:id="myAnchorPane">
+<AnchorPane minHeight="650.0" minWidth="1290.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C4FCF0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Button fx:id="back" layoutY="7.0" mnemonicParsing="false" onAction="#goDelete" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
          <font>
@@ -19,17 +19,17 @@
       </Button>
       <Label alignment="CENTER" layoutX="240.0" layoutY="13.0" prefHeight="34.0" prefWidth="257.0" text="ENTER PRODUCT CODE">
          <font>
-            <Font name="System Bold" size="23.0" />
+            <Font size="23.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="855.0" layoutY="13.0" prefHeight="34.0" prefWidth="257.0" text="SCAN BAR CODE">
+      <Label alignment="CENTER" layoutX="821.0" layoutY="13.0" prefHeight="34.0" prefWidth="257.0" text="SCAN BAR CODE">
          <font>
-            <Font name="System Bold" size="23.0" />
+            <Font size="23.0" />
          </font>
       </Label>
       <TextField layoutX="252.0" layoutY="47.0" prefHeight="25.0" prefWidth="233.0" />
       <TextField layoutX="867.0" layoutY="47.0" prefHeight="25.0" prefWidth="233.0" />
-      <GridPane fx:id="details" alignment="CENTER" gridLinesVisible="true" layoutX="350.0" layoutY="100.0" prefHeight="481.0" prefWidth="600.0" visible="false">
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="350.0" layoutY="100.0" prefHeight="481.0" prefWidth="600.0">
          <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="600.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="418.4000244140625" minWidth="0.0" prefWidth="0.0" />
@@ -127,17 +127,7 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button fx:id="ENTER" alignment="CENTER" contentDisplay="CENTER" layoutX="573.0" layoutY="39.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#itemDetails" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #005575;" text="ENTER" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Arial Black" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="HOME" layoutX="1168.0" mnemonicParsing="false" onAction="#goSample" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="HOME" textAlignment="JUSTIFY" textFill="#005575">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="560.0" layoutY="595.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #005575;" text="DELETE" textAlignment="CENTER" textFill="WHITE" onAction="#DeleteHistory" fx:id="Delete">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="573.0" layoutY="47.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" style="-fx-background-color: #005575;" text="ENTER" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
