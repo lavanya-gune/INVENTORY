@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,17 +27,31 @@
         </AnchorPane>
         <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="650.0" minWidth="1290.0" prefHeight="454.0" prefWidth="405.0" style="-fx-background-color: #C4FCF0;">
             <children>
-                <Button layoutX="450.0" layoutY="300.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="LOGIN AS ADMIN" textFill="WHITE">
+                <Button layoutX="431.0" layoutY="270.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="LOGIN AS ADMIN" textFill="WHITE">
                     <font>
-                        <Font name="Arial Black" size="14.0" />
+                        <Font name="Arial Black" size="25.0" />
                     </font>
                 </Button>
-
-                <Button layoutX="450.0" layoutY="400.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="SEARCH" textFill="WHITE" onAction="#goSearch">
+                <Button layoutX="431.0" layoutY="370.0" mnemonicParsing="false" onAction="#goSearch" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="SEARCH" textFill="WHITE">
                     <font>
-                        <Font name="Arial Black" size="14.0" />
+                        <Font name="Arial Black" size="25.0" />
                     </font>
                 </Button>
+            <Label layoutX="372.0" layoutY="77.0" prefHeight="17.0" prefWidth="630.0" text="Advance Fuel Technology Pvt Ltd.">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="38.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="437.0" layoutY="131.0" prefHeight="17.0" prefWidth="500.0" text="INVENTORY">
+               <font>
+                  <Font name="Courier New Bold Italic" size="45.0" />
+               </font>
+            </Label>
+            <Button layoutX="431.0" layoutY="470.0" mnemonicParsing="false" onAction="#goDELETE_PUBLIC" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="DELETE ITEMS" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="25.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </children>
