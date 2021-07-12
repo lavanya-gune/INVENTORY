@@ -26,11 +26,12 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/barcode4j/barcode4j.jar!/" />
+          <root url="jar://C:/mysql-connector-java-8.0.25/mysql-connector-java-8.0.25.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

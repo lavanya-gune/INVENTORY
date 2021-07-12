@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -56,6 +58,15 @@ public class Controller implements Initializable {
     @FXML
     private AnchorPane myAnchorPane;
 
+    @FXML
+    private DatePicker mfd;
+    @FXML
+    private DatePicker lastDate;
+    @FXML
+    private TextArea techDetails;
+    @FXML
+    private TextArea comment;
+
 
     public String part;
 
@@ -100,7 +111,6 @@ public class Controller implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void goAddExistingItem(ActionEvent actionEvent) throws IOException {
@@ -202,27 +212,63 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-//    public void GenerateBarCode(ActionEvent actionEvent) {
-//        try {
-//            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+    public void GenerateBarCode(ActionEvent actionEvent) {
+
+        String ProdCode = Productcode.getText();
+        String PartFor = partFor.getValue().toString();
+        String TypeOfPart = Part_Type.getValue().toString();
+        String company = Company.getValue().toString();
+        String ManufactureDate = mfd.getValue().toString();
+        String StockLocation = "pta nhi";
+        String LastDate = lastDate.getValue().toString();
+        String TechDetails = techDetails.getText();
+        String Comment = comment.getText();
+
+        try {
+
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+            Alert alert = new Alert(type, "");
+
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(stage);
+
+            alert.getDialogPane().setContentText("Do you want to confirm?");
+
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ButtonType.OK) {
+                addData(ProdCode,PartFor,TypeOfPart,company,ManufactureDate,StockLocation,LastDate,TechDetails,Comment);
+                System.out.println("under addData called!");
+
+//        Stage stage=(Stage) myAnchorPane.getScene().getWindow();
+
+//        Alert.AlertType type=Alert.AlertType.CONFIRMATION;
+//        Alert alert=new Alert(type,"");
 //
-//            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-//            Alert alert = new Alert(type, "");
+//        alert.initModality(Modality.APPLICATION_MODAL);
+//        alert.initOwner(stage);
 //
-//            alert.initModality(Modality.APPLICATION_MODAL);
-//            alert.initOwner(stage);
+//        alert.getDialogPane().setContentText("Do you want to confirm?");
 //
-//            alert.getDialogPane().setContentText("Do you want to confirm?");
-//
-//            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK) {
-//                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-//                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//                scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.show();
-//            }
+//        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+//        Optional<ButtonType> result= alert.showAndWait();
+//        if(result.get()==ButtonType.OK)
+//        {
+//            System.out.println("Got it");
+//        }
+//        else if (result.get()==ButtonType.CANCEL){
+//            System.out.println("Cancelled");
+//        }
+
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
 //            Code128Bean code128 = new Code128Bean();
 //            String image_name = Productcode.getText() + ".png";
 //            String myString = Productcode.getText();
@@ -239,10 +285,10 @@ public class Controller implements Initializable {
 //            fos.write(baos.toByteArray());
 //            fos.flush();
 //            fos.close();
-//        } catch (Exception e) {
-//            // TODO: handle exception
-//        }
-//    }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
 
     public void goDELETE_PUBLIC(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DELETE_PUBLIC.fxml")));
@@ -355,5 +401,51 @@ public class Controller implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void addData(String ProdCode,String PartFor,String TypeOfPart,String company,String ManufactureDate,String StockLocation,String LastDate,String TechDetails,String Comment){
+        System.out.println("inside addData!");
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+//        Stage stage=(Stage) myAnchorPane.getScene().getWindow();
+
+//        Alert.AlertType type=Alert.AlertType.CONFIRMATION;
+//        Alert alert=new Alert(type,"");
+//
+//        alert.initModality(Modality.APPLICATION_MODAL);
+//        alert.initOwner(stage);
+//
+//        alert.getDialogPane().setContentText("Do you want to confirm?");
+//
+//        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+//        Optional<ButtonType> result= alert.showAndWait();
+//        if(result.get()==ButtonType.OK)
+//        {
+//            System.out.println("Got it");
+//        }
+//        else if (result.get()==ButtonType.CANCEL){
+//            System.out.println("Cancelled");
+//        }
+
+
+
+        //    ProductCode PartType partFor Company mfd lastDate techDetails comment
+        String connectQuery = "INSERT INTO `inventory_management`.`product_details` VALUES ("+ProdCode+",'"+PartFor+"','"+TypeOfPart+"','"+company+"','"+ManufactureDate+"','"+LastDate+"','"+StockLocation+"','"+TechDetails+"','"+Comment+"'"+")";
+//        System.out.print(connectQuery);
+
+        try{
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(connectQuery);
+//            ResultSet queryOutput = statement.executeUpdate(connectQuery);
+
+//            while(queryOutput.next()){
+//
+//                showDetails.setText(queryOutput.getString("prod_code"));
+////                System.out.println(queryOutput.getString("prod_code"));
+//            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
