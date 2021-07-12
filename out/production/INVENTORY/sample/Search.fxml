@@ -27,7 +27,11 @@
         </Label>
         <TextField layoutX="244.0" layoutY="60.0" prefHeight="25.0" prefWidth="233.0" />
         <TextField layoutX="877.0" layoutY="60.0" prefHeight="25.0" prefWidth="241.0" />
+<<<<<<< HEAD
         <TableView fx:id="tableView" layoutX="16.0" layoutY="102.0" prefHeight="591.0" prefWidth="1259.0">
+=======
+        <TableView layoutX="16.0" layoutY="102.0" prefHeight="591.0" prefWidth="1259.0">
+>>>>>>> parent of d838a50 (added all files to new branch)
             <columns>
                 <!--                <TableColumn fx:id="col_prodName" prefWidth="150.66665077209473" text="PRODUCT NAME" />-->
                 <TableColumn fx:id="col_prodCode" minWidth="0.0" prefWidth="153.33335876464844" text="PRODUCT CODE" />

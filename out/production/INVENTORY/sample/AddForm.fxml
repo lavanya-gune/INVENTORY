@@ -38,7 +38,11 @@
                                 <Font name="Arial Bold" size="14.0" />
                             </font>
                         </Text>
+<<<<<<< HEAD
                   <TextField fx:id="Productcode" layoutX="312.0" layoutY="16.0" prefHeight="25.0" prefWidth="250.0" />
+=======
+                  <TextField layoutX="312.0" layoutY="16.0" prefHeight="25.0" prefWidth="250.0" fx:id="Productcode" />
+>>>>>>> parent of d838a50 (added all files to new branch)
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -61,7 +65,10 @@
                   </Text>
                     </children>
                 </AnchorPane>
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of d838a50 (added all files to new branch)
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                     <children>
                         <ChoiceBox fx:id="Company" layoutX="311.0" layoutY="16.0" prefWidth="250.0" />
@@ -74,7 +81,11 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                     <children>
+<<<<<<< HEAD
                         <DatePicker fx:id="mfd" layoutX="311.0" layoutY="15.0" prefWidth="250.0" />
+=======
+                        <DatePicker layoutX="311.0" layoutY="15.0" prefWidth="250.0" />
+>>>>>>> parent of d838a50 (added all files to new branch)
                   <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="MANUFACTURING DATE" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
@@ -84,7 +95,11 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                     <children>
+<<<<<<< HEAD
                         <DatePicker fx:id="lastDate" layoutX="310.0" layoutY="16.0" prefWidth="250.0" />
+=======
+                        <DatePicker layoutX="310.0" layoutY="16.0" prefWidth="250.0" />
+>>>>>>> parent of d838a50 (added all files to new branch)
                   <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="LAST DATE OF SALE/PURCHASE" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
@@ -104,7 +119,11 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                     <children>
+<<<<<<< HEAD
                         <TextArea fx:id="techDetails" layoutX="311.0" layoutY="4.0" prefHeight="50.0" prefWidth="250.0" promptText="Enter your details">
+=======
+                        <TextArea layoutX="311.0" layoutY="4.0" prefHeight="50.0" prefWidth="250.0" promptText="Enter your details">
+>>>>>>> parent of d838a50 (added all files to new branch)
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
@@ -118,7 +137,11 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
                     <children>
+<<<<<<< HEAD
                         <TextArea fx:id="comment" layoutX="312.0" layoutY="6.0" prefHeight="50.0" prefWidth="250.0" promptText="Enter your details">
+=======
+                        <TextArea layoutX="312.0" layoutY="6.0" prefHeight="50.0" prefWidth="250.0" promptText="Enter your details">
+>>>>>>> parent of d838a50 (added all files to new branch)
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
@@ -132,14 +155,22 @@
                 </AnchorPane>
             </children>
         </GridPane>
+<<<<<<< HEAD
 
         <Button fx:id="connectbutton" layoutX="561.0" layoutY="581.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectButton" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
+=======
+        <Button layoutX="561.0" layoutY="581.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE" fx:id="Submit" onAction="#GenerateBarCode">
+>>>>>>> parent of d838a50 (added all files to new branch)
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
+<<<<<<< HEAD
 
         <Button fx:id="back" layoutX="-7.0" mnemonicParsing="false" onAction="#AddItem" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
+=======
+      <Button fx:id="back" layoutX="-7.0" mnemonicParsing="false" onAction="#AddItem" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
+>>>>>>> parent of d838a50 (added all files to new branch)
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
