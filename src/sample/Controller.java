@@ -2,19 +2,21 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+
 import java.io.File;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
@@ -23,7 +25,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
-import javafx.scene.control.TextField;
 
 public class Controller implements Initializable {
     private Stage stage;
@@ -37,6 +38,8 @@ public class Controller implements Initializable {
     @FXML
     Label wrong;
     @FXML
+    Button HOME;
+    @FXML
     private TextField Productcode;
     @FXML
     PasswordField password;
@@ -46,6 +49,13 @@ public class Controller implements Initializable {
     private ChoiceBox<String> partFor = new ChoiceBox<>();
     @FXML
     private ChoiceBox<String> Company = new ChoiceBox<>();
+    @FXML
+    private ChoiceBox<String> PS = new ChoiceBox<>();
+    @FXML
+    private GridPane details;
+    @FXML
+    private AnchorPane myAnchorPane;
+
 
     public String part;
 
@@ -84,7 +94,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void AddNewItem(ActionEvent actionEvent) throws IOException {
+    public void goAddNewItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddForm.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -93,7 +103,7 @@ public class Controller implements Initializable {
 
     }
 
-    public void AddExistingItem(ActionEvent actionEvent) throws IOException {
+    public void goAddExistingItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddExisting.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -101,7 +111,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void AddItem(ActionEvent actionEvent) throws IOException {
+    public void goAddItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -122,6 +132,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partFor.getItems().addAll(partfor);
         Part_Type.getItems().addAll(partType);
+        PS.getItems().addAll("Part", "System");
     }
 
     public void selectCompany() {
@@ -167,7 +178,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void deleteItem(ActionEvent actionEvent) throws IOException {
+    public void godeleteItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Delete_Existing.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -175,7 +186,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void deleteHistory(ActionEvent actionEvent) throws IOException {
+    public void godeleteHistory(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DeleteItemHistory.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -193,9 +204,28 @@ public class Controller implements Initializable {
 
     public void GenerateBarCode(ActionEvent actionEvent) {
         try {
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+            Alert alert = new Alert(type, "");
+
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(stage);
+
+            alert.getDialogPane().setContentText("Do you want to confirm?");
+
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
             Code128Bean code128 = new Code128Bean();
-            String image_name=Productcode.getText()+".png";
-            String myString=Productcode.getText();
+            String image_name = Productcode.getText() + ".png";
+            String myString = Productcode.getText();
             code128.setHeight(15f);
             code128.setModuleWidth(0.3);
             code128.setQuietZone(10);
@@ -213,5 +243,117 @@ public class Controller implements Initializable {
             // TODO: handle exception
         }
     }
-}
 
+    public void goDELETE_PUBLIC(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DELETE_PUBLIC.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void itemDetails() {
+        details.setVisible(true);
+    }
+
+
+    public void AddExisting(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+        Alert alert = new Alert(type, "");
+
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+
+        alert.getDialogPane().setContentText("Do you want to confirm?");
+
+        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    public void DeleteExisting(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+        Alert alert = new Alert(type, "");
+
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+
+        alert.getDialogPane().setContentText("Do you want to confirm?");
+
+        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("delete.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+
+            public void DeleteHistory(ActionEvent actionEvent) throws IOException {
+                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+                Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+                Alert alert = new Alert(type, "");
+
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.initOwner(stage);
+
+                alert.getDialogPane().setContentText("Do you want to confirm?");
+
+                alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("delete.fxml")));
+                    stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+
+
+    }
+
+    public void DeleteLog(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+        Alert alert = new Alert(type, "");
+
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+
+        alert.getDialogPane().setContentText("Do you want to confirm?");
+
+        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+    }
+
+    public void godeleteLog(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deleteLog.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+}
