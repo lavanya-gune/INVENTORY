@@ -25,8 +25,8 @@ import java.util.Objects;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
-//import org.krysalis.barcode4j.impl.code128.Code128Bean;
-//import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
+import org.krysalis.barcode4j.impl.code128.Code128Bean;
+import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 
 public class Controller implements Initializable {
     private Stage stage;
@@ -240,28 +240,25 @@ public class Controller implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                addData(ProdCode,PartFor,TypeOfPart,company,ManufactureDate,StockLocation,LastDate,TechDetails,Comment);
-                System.out.println("under addData called!");
+                addData(ProdCode, PartFor, TypeOfPart, company, ManufactureDate, StockLocation, LastDate, TechDetails, Comment);
 
-//        Stage stage=(Stage) myAnchorPane.getScene().getWindow();
+                Code128Bean code128 = new Code128Bean();
+                String image_name = Productcode.getText() + ".png";
+                String myString = Productcode.getText();
+                code128.setHeight(15f);
+                code128.setModuleWidth(0.3);
+                code128.setQuietZone(10);
+                code128.doQuietZone(true);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+                code128.generateBarcode(canvas, myString);
+                canvas.finish();
+                //write to png file
+                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
+                fos.write(baos.toByteArray());
+                fos.flush();
+                fos.close();
 
-//        Alert.AlertType type=Alert.AlertType.CONFIRMATION;
-//        Alert alert=new Alert(type,"");
-//
-//        alert.initModality(Modality.APPLICATION_MODAL);
-//        alert.initOwner(stage);
-//
-//        alert.getDialogPane().setContentText("Do you want to confirm?");
-//
-//        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-//        Optional<ButtonType> result= alert.showAndWait();
-//        if(result.get()==ButtonType.OK)
-//        {
-//            System.out.println("Got it");
-//        }
-//        else if (result.get()==ButtonType.CANCEL){
-//            System.out.println("Cancelled");
-//        }
 
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
                 stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -269,22 +266,7 @@ public class Controller implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-//            Code128Bean code128 = new Code128Bean();
-//            String image_name = Productcode.getText() + ".png";
-//            String myString = Productcode.getText();
-//            code128.setHeight(15f);
-//            code128.setModuleWidth(0.3);
-//            code128.setQuietZone(10);
-//            code128.doQuietZone(true);
-//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-//            code128.generateBarcode(canvas, myString);
-//            canvas.finish();
-//            //write to png file
-//            FileOutputStream fos = new FileOutputStream("C:\\Users\\gopal2\\Downloads\\barcode4j" + image_name);
-//            fos.write(baos.toByteArray());
-//            fos.flush();
-//            fos.close();
+
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -404,7 +386,7 @@ public class Controller implements Initializable {
     }
 
     public void addData(String ProdCode,String PartFor,String TypeOfPart,String company,String ManufactureDate,String StockLocation,String LastDate,String TechDetails,String Comment){
-        System.out.println("inside addData!");
+
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
