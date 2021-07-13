@@ -267,7 +267,6 @@ public class Controller implements Initializable {
                 stage.show();
             }
 
-
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -387,6 +386,7 @@ public class Controller implements Initializable {
     }
 
     public void addData(String ProdCode,String PartFor,String TypeOfPart,String company,String ManufactureDate,String StockLocation,String LastDate,String TechDetails,String Comment){
+
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
