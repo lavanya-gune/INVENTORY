@@ -196,13 +196,6 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void godeleteHistory(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DeleteItemHistory.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void goSearch(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Search.fxml")));
@@ -223,6 +216,7 @@ public class Controller implements Initializable {
         String LastDate = lastDate.getValue().toString();
         String TechDetails = techDetails.getText();
         String Comment = comment.getText();
+        Integer quantity = 12;
 
         try {
 
@@ -240,7 +234,7 @@ public class Controller implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                addData(ProdCode, PartFor, TypeOfPart, company, ManufactureDate, StockLocation, LastDate, TechDetails, Comment);
+                addData(ProdCode, PartFor, TypeOfPart, company, ManufactureDate, StockLocation, LastDate, TechDetails, Comment, quantity);
 
                 Code128Bean code128 = new Code128Bean();
                 String image_name = Productcode.getText() + ".png";
@@ -387,7 +381,7 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void addData(String ProdCode,String PartFor,String TypeOfPart,String company,String ManufactureDate,String StockLocation,String LastDate,String TechDetails,String Comment){
+    public void addData(String ProdCode,String PartFor,String TypeOfPart,String company,String ManufactureDate,String StockLocation,String LastDate,String TechDetails,String Comment, Integer quantity){
 
 
         DatabaseConnection connectNow = new DatabaseConnection();
@@ -415,7 +409,16 @@ public class Controller implements Initializable {
 
 
         //    ProductCode PartType partFor Company mfd lastDate techDetails comment
-        String connectQuery = "INSERT INTO `inventory_management`.`product_details` VALUES ("+ProdCode+",'"+PartFor+"','"+TypeOfPart+"','"+company+"','"+ManufactureDate+"','"+LastDate+"','"+StockLocation+"','"+TechDetails+"','"+Comment+"'"+")";
+        String connectQuery = "INSERT INTO `inventory_management`.`product_details` (`prod_code`,\n" +
+                "`part_for`,\n" +
+                "`part_type`,\n" +
+                "`company`,\n" +
+                "`mfd`,\n" +
+                "`last_date`,\n" +
+                "`stock_location`,\n" +
+                "`tech_details`,\n" +
+                "`comment`,\n" +
+                "`quantity`) VALUES ("+ProdCode+",'"+PartFor+"','"+TypeOfPart+"','"+company+"','"+ManufactureDate+"','"+LastDate+"','"+StockLocation+"','"+TechDetails+"','"+Comment+"','"+quantity+"'"+")";
 //        System.out.print(connectQuery);
 
         try{
