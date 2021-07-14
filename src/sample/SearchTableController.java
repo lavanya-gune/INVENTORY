@@ -28,6 +28,7 @@ public class SearchTableController implements Initializable {
     private Scene scene;
     private Parent root;
     private String connectQuery;
+    private Integer quantity;
 
     @FXML
     public TableView<modelTable> tableView=new TableView<>();
@@ -112,6 +113,32 @@ public class SearchTableController implements Initializable {
                         queryOutput.getString("company"),
                         queryOutput.getString("comment")));
             }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public void showRowDetails(ActionEvent event) {
+        ObservableList<modelTable> productList;
+        productList = tableView.getSelectionModel().getSelectedItems();
+        Integer selectedProdID = productList.get(0).getPid();
+
+//        connectQuery = String.format("DELETE FROM `inventory_management`.`product_details` WHERE u_ID IN ( SELECT pid FROM\n" +
+//                "(SELECT u_ID AS pid FROM `inventory_management`.`product_details` WHERE prod_code = %d) AS p );\n",selectedProdID);
+
+//        quantity = 5;
+//        connectQuery = String.format("UPDATE `inventory_management`.`product_details` SET quantity = %d WHERE u_ID = %d", quantity,selectedProdID);
+
+        System.out.println(connectQuery);
+
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(connectQuery);
+
         } catch (Exception e){
             e.printStackTrace();
         }

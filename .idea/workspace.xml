@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/DeleteItemHistoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistory.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchTableController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
