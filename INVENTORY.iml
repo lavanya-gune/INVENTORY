@@ -27,7 +27,6 @@
       <library>
         <CLASSES>
           <root url="jar://C:/mysql-connector-java-8.0.25/barcode4j.jar!/" />
-
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -42,7 +41,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="barcode4j" level="project" />
   </component>
 </module>

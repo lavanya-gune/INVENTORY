@@ -38,44 +38,52 @@ public class Controller implements Initializable {
     @FXML
     Button back;
     @FXML
-    Label wrong;
+    private Button choose;
     @FXML
     Button HOME;
+
     @FXML
-    private TextField Productcode;
+    Label wrong;
+
+
+    @FXML
+    private TextField PartNumber;
+    @FXML
+    private TextField ReferencePartNumber;
+    @FXML
+    private TextField Quantity;
+    @FXML
+    private TextField AddOn;
+    @FXML
+    private TextField LandingValue;
+    @FXML
+    private TextField SellValue;
+
     @FXML
     PasswordField password;
-    @FXML
-    private ChoiceBox<String> Part_Type = new ChoiceBox<>();
+
     @FXML
     private ChoiceBox<String> partFor = new ChoiceBox<>();
     @FXML
     private ChoiceBox<String> Company = new ChoiceBox<>();
-    @FXML
-    private ChoiceBox<String> PS = new ChoiceBox<>();
+
     @FXML
     private GridPane details;
     @FXML
     private AnchorPane myAnchorPane;
 
     @FXML
-    private DatePicker mfd;
-    @FXML
-    private DatePicker lastDate;
+    private DatePicker InventoryDate;
+
     @FXML
     private TextArea techDetails;
     @FXML
     private TextArea comment;
+    @FXML
+    private TextArea SourceOfPurchase;
 
-
-    public String part;
-
-    private final String[] partfor = {"Injector", "Rail", "Pump", "MISCELLANEOUS"};
-    private final String[] partType = {"Full Kit", "Nozzle", "Valve", "Both Nozzle and Valve", "Solenoid"};
-    private final String[] Pump = {"ROTARY", "LINE PUMP", "CP", "VP", "MISCELLANEOUS"};
-    private final String[] Rail = {"BOSCH", "VOLVO", "DELPHI", "MISCELLANEOUS"};
-    private final String[] Injector = {"BOSCH", "DELPHI", "DENSO", "CONTI", "PEIZO", "UNIT INJECTOR", "VOLVO", "CAT", "MISCELLANEOUS"};
-    private final String[] MISC = {"BOSCH", "DELPHI", "DENSO", "CONTI", "PEIZO", "UNIT INJECTOR", "VOLVO", "CAT", "ROTARY", "LINE PUMP", "CP", "VP", "MISCELLANEOUS"};
+    private final String[] partfor = {"CR Injector","CR Pump","CR Rail","EUI/EUP AII","INCLINE PUMP","VE/EDC PUMP/ VP14/VPH4","Heavy/Special","China Parts","MISCELLANEOUS"};
+    private final String[] companies = {"BOSCH", "DELPHI", "DENSO","ZEXEL","CONTINENTAL VDO","REDAT","DISA","CHINA","MOTOR PAL","OTHERS", "MISCELLANEOUS"};
 
     public void goLogin(javafx.event.ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
@@ -141,42 +149,19 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partFor.getItems().addAll(partfor);
-        Part_Type.getItems().addAll(partType);
-        PS.getItems().addAll("Part", "System");
+        Company.getItems().addAll(companies);
     }
 
-    public void selectCompany() {
-        part = partFor.getValue();
-        if (part.equals("Rail")) {
-            Company.getItems().clear();
-            Company.getItems().addAll(Rail);
-        } else {
-            if (part.equals("Injector")) {
-                Company.getItems().clear();
-                Company.getItems().addAll(Injector);
-            } else {
-                if (part.equals("PUMP")) {
-                    Company.getItems().clear();
-                    Company.getItems().addAll(Pump);
-                } else {
-                    Company.getItems().clear();
-                    Company.getItems().addAll(MISC);
-                }
-            }
 
-        }
-
-    }
-
-    @FXML
-    private Button choose;
+String stockimage;
 
     public void singleFileChooser(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", "*.jpg"));
         File f = fc.showOpenDialog(null);
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", "*.jpg"));
         if (f != null) {
             choose.setText(f.getAbsolutePath());
+            stockimage=f.getAbsolutePath();
         }
     }
 
@@ -214,15 +199,22 @@ public class Controller implements Initializable {
 
     public void GenerateBarCode(ActionEvent actionEvent) {
 
-        String ProdCode = Productcode.getText();
+        String Partnumber = PartNumber.getText();
+        String RefPartnumber = ReferencePartNumber.getText();
+        String quantity = Quantity.getText();
+        String addon = AddOn.getText();
+        String Sourceofpurchase = SourceOfPurchase.getText();
+        String landingValue= LandingValue.getText();
+        String sellvalue= SellValue.getText();
         String PartFor = partFor.getValue().toString();
-        String TypeOfPart = Part_Type.getValue().toString();
         String company = Company.getValue().toString();
-        String ManufactureDate = mfd.getValue().toString();
-        String StockLocation = "pta nhi";
-        String LastDate = lastDate.getValue().toString();
+        String inventoryDate = InventoryDate.getValue().toString();
+        String StockLocation = stockimage;
         String TechDetails = techDetails.getText();
         String Comment = comment.getText();
+//        Random rand= new Random();
+//
+//        UPC.setText(myString);
 
         try {
 
@@ -236,15 +228,15 @@ public class Controller implements Initializable {
 
             alert.getDialogPane().setContentText("Do you want to confirm?");
 
-            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                addData(ProdCode, PartFor, TypeOfPart, company, ManufactureDate, StockLocation, LastDate, TechDetails, Comment);
+                //addData(Partnumber,RefPartnumber,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails, Comment);
 
                 Code128Bean code128 = new Code128Bean();
-                String image_name = Productcode.getText() + ".png";
-                String myString = Productcode.getText();
+                String myString = PartNumber.getText() ;
+                String image_name = PartNumber.getText() + ".png";
                 code128.setHeight(15f);
                 code128.setModuleWidth(0.3);
                 code128.setQuietZone(10);
