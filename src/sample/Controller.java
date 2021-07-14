@@ -255,9 +255,11 @@ public class Controller implements Initializable {
                 canvas.finish();
                 //write to png file
                 FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
+
                 fos.write(baos.toByteArray());
                 fos.flush();
                 fos.close();
+
 
 
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));

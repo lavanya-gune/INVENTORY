@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -26,6 +27,7 @@ public class SearchTableController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private String connectQuery;
 
     @FXML
     public TableView<modelTable> tableView=new TableView<>();
@@ -41,6 +43,9 @@ public class SearchTableController implements Initializable {
     public TableColumn<modelTable,String> col_stockLocation=new TableColumn<>();
     @FXML
     public TableColumn<modelTable,String> col_type=new TableColumn<>();
+
+    @FXML
+    private TextField enteredProdCode;
 
 
     ObservableList<modelTable> observableList = FXCollections.observableArrayList();
@@ -60,7 +65,7 @@ public class SearchTableController implements Initializable {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
 
-            String connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
+            connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
@@ -85,4 +90,31 @@ public class SearchTableController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void retrieveSearchedItems(ActionEvent event) {
+        String ProdCode = enteredProdCode.getText();
+        connectQuery = String.format("SELECT * FROM `inventory_management`.`product_details` where prod_code REGEXP '^%s'",ProdCode);
+        tableView.getItems().clear();
+
+        try {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(connectQuery);
+
+            while(queryOutput.next()) {
+                observableList.add(new modelTable(
+                        queryOutput.getInt("prod_code"),
+                        queryOutput.getString("mfd"),
+                        queryOutput.getString("last_date"),
+                        queryOutput.getString("stock_location"),
+                        queryOutput.getString("company"),
+                        queryOutput.getString("comment")));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
+
