@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/Barcode20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddForm.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INVENTORY.iml" beforeDir="false" afterPath="$PROJECT_DIR$/INVENTORY.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddNewItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddNewItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/AddForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddNewItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddNewItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/third.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchTableController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +51,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scene_try" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/barcode4j/barcode4j.jar" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.18358831" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
