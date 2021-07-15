@@ -53,11 +53,14 @@ public class Controller implements Initializable {
     @FXML
     private TextField Quantity;
     @FXML
-    private TextField AddOn;
+    private TextArea AddOn;
     @FXML
     private TextField LandingValue;
     @FXML
     private TextField SellValue;
+    @FXML
+    private TextField setof;
+
 
     @FXML
     PasswordField password;
@@ -66,6 +69,8 @@ public class Controller implements Initializable {
     private ChoiceBox<String> partFor = new ChoiceBox<>();
     @FXML
     private ChoiceBox<String> Company = new ChoiceBox<>();
+    @FXML
+    private ChoiceBox<String> prefix = new ChoiceBox<>();
 
     @FXML
     private GridPane details;
@@ -77,13 +82,13 @@ public class Controller implements Initializable {
 
     @FXML
     private TextArea techDetails;
-    @FXML
-    private TextArea comment;
+
     @FXML
     private TextArea SourceOfPurchase;
 
     private final String[] partfor = {"CR Injector","CR Pump","CR Rail","EUI/EUP AII","INCLINE PUMP","VE/EDC PUMP/ VP14/VPH4","Heavy/Special","China Parts","MISCELLANEOUS"};
     private final String[] companies = {"BOSCH", "DELPHI", "DENSO","ZEXEL","CONTINENTAL VDO","REDAT","DISA","CHINA","MOTOR PAL","OTHERS", "MISCELLANEOUS"};
+    private final String[] pre={"CRI","CPP","CR","EUI","EUP","VE4","VEC","VP44","VP29"};
 
     public void goLogin(javafx.event.ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
@@ -114,7 +119,7 @@ public class Controller implements Initializable {
     }
 
     public void goAddNewItem(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddForm.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddNewItem.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -150,10 +155,11 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partFor.getItems().addAll(partfor);
         Company.getItems().addAll(companies);
+        prefix.getItems().addAll(pre);
     }
 
 
-String stockimage;
+String stockImage;
 
     public void singleFileChooser(ActionEvent event) {
         FileChooser fc = new FileChooser();
@@ -161,7 +167,7 @@ String stockimage;
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", "*.jpg"));
         if (f != null) {
             choose.setText(f.getAbsolutePath());
-            stockimage=f.getAbsolutePath();
+            stockImage =f.getAbsolutePath();
         }
     }
 
@@ -197,7 +203,7 @@ String stockimage;
         stage.show();
     }
 
-    public void GenerateBarCode(ActionEvent actionEvent) {
+    public void AddPart(ActionEvent actionEvent) {
 
         String Partnumber = PartNumber.getText();
         String RefPartnumber = ReferencePartNumber.getText();
@@ -209,9 +215,9 @@ String stockimage;
         String PartFor = partFor.getValue().toString();
         String company = Company.getValue().toString();
         String inventoryDate = InventoryDate.getValue().toString();
-        String StockLocation = stockimage;
+        String StockLocation = stockImage;
         String TechDetails = techDetails.getText();
-        String Comment = comment.getText();
+
 //        Random rand= new Random();
 //
 //        UPC.setText(myString);
@@ -232,7 +238,139 @@ String stockimage;
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                //addData(Partnumber,RefPartnumber,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails, Comment);
+                //addData(Partnumber,RefPartnumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails);
+
+                Code128Bean code128 = new Code128Bean();
+                String myString = PartNumber.getText() ;
+                String image_name = PartNumber.getText() + ".png";
+                code128.setHeight(15f);
+                code128.setModuleWidth(0.3);
+                code128.setQuietZone(10);
+                code128.doQuietZone(true);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+                code128.generateBarcode(canvas, myString);
+                canvas.finish();
+                //write to png file
+                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
+                fos.write(baos.toByteArray());
+                fos.flush();
+                fos.close();
+
+
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
+
+    public void AddSystem(ActionEvent actionEvent) {
+
+        String Partnumber = PartNumber.getText();
+        String RefPartnumber = ReferencePartNumber.getText();
+        String quantity = Quantity.getText();
+        String addon = AddOn.getText();
+        String Sourceofpurchase = SourceOfPurchase.getText();
+        String landingValue= LandingValue.getText();
+        String sellvalue= SellValue.getText();
+        String PartFor = partFor.getValue().toString();
+        String company = Company.getValue().toString();
+        String Setof= setof.getText();
+        String Prefix= "AFTPL"+prefix.getValue().toString();
+        String inventoryDate = InventoryDate.getValue().toString();
+        String StockLocation = stockImage;
+        String TechDetails = techDetails.getText();
+
+//        Random rand= new Random();
+//
+//        UPC.setText(myString);
+
+        try {
+
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+            Alert alert = new Alert(type, "");
+
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(stage);
+
+            alert.getDialogPane().setContentText("Do you want to confirm?");
+
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is"+"00"+"\n Prefix="+Prefix);
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ButtonType.OK) {
+                //addData(Partnumber,RefPartnumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue,Setof,Prefix StockLocation, TechDetails);
+
+                Code128Bean code128 = new Code128Bean();
+                String myString = "ALTFP"+prefix.getValue()+PartNumber.getText() ;
+                String image_name = PartNumber.getText() + ".png";
+                code128.setHeight(15f);
+                code128.setModuleWidth(0.3);
+                code128.setQuietZone(10);
+                code128.doQuietZone(true);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+                code128.generateBarcode(canvas, myString);
+                canvas.finish();
+                //write to png file
+                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
+                fos.write(baos.toByteArray());
+                fos.flush();
+                fos.close();
+
+
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+    public void AddMISC(ActionEvent actionEvent)
+    {
+        String quantity = Quantity.getText();
+        String Sourceofpurchase = SourceOfPurchase.getText();
+        String landingValue= LandingValue.getText();
+        String sellvalue= SellValue.getText();
+        String inventoryDate = InventoryDate.getValue().toString();
+        String StockLocation = stockImage;
+        String TechDetails = techDetails.getText();
+        String Comment= AddOn.getText();
+
+//        Random rand= new Random();
+//
+//        UPC.setText(myString);
+
+        try {
+
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+            Alert alert = new Alert(type, "");
+
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(stage);
+
+            alert.getDialogPane().setContentText("Do you want to confirm?");
+
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is"+"00");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ButtonType.OK) {
+                //addData(quantity,inventoryDate,Sourceofpurchase,landingValue,TechDetails,sellvalue,StockLocation,comment);
 
                 Code128Bean code128 = new Code128Bean();
                 String myString = PartNumber.getText() ;
@@ -421,5 +559,29 @@ String stockimage;
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void goAddNewMISC(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormMISC.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goAddNewPart(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormPart.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goAddNewSystem(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormSystem.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
