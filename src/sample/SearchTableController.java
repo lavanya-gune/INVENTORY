@@ -54,6 +54,10 @@ public class SearchTableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        String ProdCode = enteredProdCode.getText();
+        connectQuery = String.format("SELECT * FROM `inventory_management`.`product_details` where prod_code REGEXP '^%s'",ProdCode);
+        tableView.getItems().clear();
+
         col_prodCode.setCellValueFactory(new PropertyValueFactory<>("Pid"));
         col_mfd.setCellValueFactory(new PropertyValueFactory<>("Pmfd"));
         col_company.setCellValueFactory(new PropertyValueFactory<>("Pcompany"));
@@ -66,7 +70,7 @@ public class SearchTableController implements Initializable {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
 
-            connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
+//            connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
@@ -79,7 +83,7 @@ public class SearchTableController implements Initializable {
                         queryOutput.getString("company"),
                         queryOutput.getString("comment")));
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -144,4 +148,5 @@ public class SearchTableController implements Initializable {
         }
     }
 }
+
 
