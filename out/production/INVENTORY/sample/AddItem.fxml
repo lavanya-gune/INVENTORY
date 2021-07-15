@@ -6,12 +6,12 @@
 
 <AnchorPane minHeight="650.0" minWidth="1290.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C4FCF0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <Button fx:id="new_item" layoutX="453.0" layoutY="320.0" mnemonicParsing="false" onAction="#goAddNewItem" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #005575;" text="ADD NEW ITEM" textFill="#f7f4f4">
+        <Button fx:id="new_item" layoutX="460.0" layoutY="277.0" mnemonicParsing="false" onAction="#goAddNewItem" prefHeight="47.0" prefWidth="335.0" style="-fx-background-color: #005575;" text="INWARD NEW ITEM" textFill="#f7f4f4">
             <font>
                 <Font name="Arial Black" size="22.0" />
             </font>
         </Button>
-        <Button fx:id="existing_item" layoutX="451.0" layoutY="230.0" mnemonicParsing="false" onAction="#goAddExistingItem" prefHeight="47.0" prefWidth="388.0" style="-fx-background-color: #005575;" text="ADD TO THE EXISTING ITEM" textFill="#f2f1e5">
+        <Button fx:id="existing_item" layoutX="415.0" layoutY="355.0" mnemonicParsing="false" onAction="#goAddExistingItem" prefHeight="47.0" prefWidth="426.0" style="-fx-background-color: #005575;" text="INWARD TO THE EXISTING ITEM" textFill="#f2f1e5">
             <font>
                 <Font name="Arial Black" size="22.0" />
             </font>
@@ -24,6 +24,11 @@
       <Button fx:id="HOME" layoutX="1168.0" mnemonicParsing="false" onAction="#goSample" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="HOME" textAlignment="JUSTIFY" textFill="#005575">
          <font>
             <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="existing_item1" layoutX="348.0" layoutY="434.0" mnemonicParsing="false" onAction="#goAddExistingItem" prefHeight="47.0" prefWidth="560.0" style="-fx-background-color: #005575;" text="INWARD TO THE EXISTING ITEM AND EDIT" textFill="#f2f1e5">
+         <font>
+            <Font name="Arial Black" size="22.0" />
          </font>
       </Button>
     </children>
