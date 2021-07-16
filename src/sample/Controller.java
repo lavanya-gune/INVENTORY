@@ -60,6 +60,8 @@ public class Controller implements Initializable {
     private TextField SellValue;
     @FXML
     private TextField setof;
+    @FXML
+    private Label answer;
 
 
     @FXML
@@ -159,7 +161,7 @@ public class Controller implements Initializable {
     }
 
 
-String stockImage;
+    String stockImage;
 
     public void singleFileChooser(ActionEvent event) {
         FileChooser fc = new FileChooser();
@@ -201,6 +203,18 @@ String stockImage;
         String Partnumber = PartNumber.getText();
         String RefPartnumber = ReferencePartNumber.getText();
         String quantity = Quantity.getText();
+        int l = quantity.length();
+        int ctr = 1;
+        int b= 1;
+        for (int i = 0; i < l; i++) {
+            if (quantity.charAt(i) >= '0' && quantity.charAt(i) <= '9') {
+                ctr++;
+            }
+            else {
+                b=0;
+            }
+        }
+        int ans = ctr*b;
         String addon = AddOn.getText();
         String Sourceofpurchase = SourceOfPurchase.getText();
         String landingValue= LandingValue.getText();
@@ -210,58 +224,70 @@ String stockImage;
         String inventoryDate = InventoryDate.getValue().toString();
         String StockLocation = stockImage;
         String TechDetails = techDetails.getText();
+        answer.setVisible(false);
 
 
 //        Random rand= new Random();
 //
 //        UPC.setText(myString);
 
-        try {
+        if(ans!=0) {
+            try {
 
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
 
-            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-            Alert alert = new Alert(type, "");
+                Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+                Alert alert = new Alert(type, "");
 
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.initOwner(stage);
 
-            alert.getDialogPane().setContentText("Do you want to confirm?");
-
-            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
-            Optional<ButtonType> result = alert.showAndWait();
-
+<<<<<<< HEAD
             if (result.get() == ButtonType.OK) {
 
                 //addData(Partnumber,RefPartnumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails);
+=======
+                alert.getDialogPane().setContentText("Do you want to confirm?");
+>>>>>>> master
 
-                Code128Bean code128 = new Code128Bean();
-                String myString = PartNumber.getText() ;
-                String image_name = PartNumber.getText() + ".png";
-                code128.setHeight(15f);
-                code128.setModuleWidth(0.3);
-                code128.setQuietZone(10);
-                code128.doQuietZone(true);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-                code128.generateBarcode(canvas, myString);
-                canvas.finish();
-                //write to png file
-                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
-                fos.write(baos.toByteArray());
-                fos.flush();
-                fos.close();
+                alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.get() == ButtonType.OK) {
+                    //addData(Partnumber,RefPartnumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails);
+
+                    Code128Bean code128 = new Code128Bean();
+                    String myString = PartNumber.getText();
+                    String image_name = PartNumber.getText() + ".png";
+                    code128.setHeight(15f);
+                    code128.setModuleWidth(0.3);
+                    code128.setQuietZone(10);
+                    code128.doQuietZone(true);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+                    code128.generateBarcode(canvas, myString);
+                    canvas.finish();
+                    //write to png file
+                    FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
+                    fos.write(baos.toByteArray());
+                    fos.flush();
+                    fos.close();
 
 
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                    stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+
+            } catch (Exception e) {
+                // TODO: handle exception
             }
-
-        } catch (Exception e) {
-            // TODO: handle exception
+        }
+        else{
+            answer.setVisible(true);
+            answer.setText("Enter digits from 0 to 9");
         }
     }
 
@@ -337,6 +363,19 @@ String stockImage;
     public void AddMISC(ActionEvent actionEvent)
     {
         String quantity = Quantity.getText();
+        int l = quantity.length();
+        int ctr = 1;
+        int b= 1;
+        for (int i = 0; i < l; i++) {
+            if (quantity.charAt(i) >= '0' && quantity.charAt(i) <= '9') {
+                ctr++;
+            }
+            else {
+                b=0;
+            }
+        }
+        int ans=ctr*b;
+
         String Sourceofpurchase = SourceOfPurchase.getText();
         String landingValue= LandingValue.getText();
         String sellvalue= SellValue.getText();
@@ -348,54 +387,56 @@ String stockImage;
 //        Random rand= new Random();
 //
 //        UPC.setText(myString);
+        if (ans!=0) {
+            try {
 
-        try {
+                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
 
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+                Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+                Alert alert = new Alert(type, "");
 
-            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-            Alert alert = new Alert(type, "");
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.initOwner(stage);
 
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
+                alert.getDialogPane().setContentText("Do you want to confirm?");
 
-            alert.getDialogPane().setContentText("Do you want to confirm?");
+                alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is" + "00");
+                Optional<ButtonType> result = alert.showAndWait();
 
-            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is"+"00");
-            Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+//        addData(quantity,inventoryDate,Sourceofpurchase,landingValue,TechDetails,sellvalue,StockLocation,Comment);
 
-            if (result.get() == ButtonType.OK) {
-                //addData(quantity,inventoryDate,Sourceofpurchase,landingValue,TechDetails,sellvalue,StockLocation,comment);
+                    Code128Bean code128 = new Code128Bean();
+                    String myString = PartNumber.getText();
+                    String image_name = PartNumber.getText() + ".png";
+                    code128.setHeight(15f);
+                    code128.setModuleWidth(0.3);
+                    code128.setQuietZone(10);
+                    code128.doQuietZone(true);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+                    code128.generateBarcode(canvas, myString);
+                    canvas.finish();
+                    //write to png file
+                    FileOutputStream fos = new FileOutputStream("C:\\Users\\Mansi\\IdeaProjects\\Inventory\\" + image_name);
 
-                Code128Bean code128 = new Code128Bean();
-                String myString = PartNumber.getText() ;
-                String image_name = PartNumber.getText() + ".png";
-                code128.setHeight(15f);
-                code128.setModuleWidth(0.3);
-                code128.setQuietZone(10);
-                code128.doQuietZone(true);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-                code128.generateBarcode(canvas, myString);
-                canvas.finish();
-                //write to png file
-                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
-
-                fos.write(baos.toByteArray());
-                fos.flush();
-                fos.close();
+                    fos.write(baos.toByteArray());
+                    fos.flush();
+                    fos.close();
 
 
-
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                    stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
             }
-
-        } catch (Exception e) {
-            // TODO: handle exception
+        }
+        else {
+            answer.setText("put valid credentials");
         }
     }
 
@@ -457,26 +498,26 @@ String stockImage;
     }
 
 
-            public void DeleteHistory(ActionEvent actionEvent) throws IOException {
-                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+    public void DeleteHistory(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
 
-                Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-                Alert alert = new Alert(type, "");
+        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+        Alert alert = new Alert(type, "");
 
-                alert.initModality(Modality.APPLICATION_MODAL);
-                alert.initOwner(stage);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
 
-                alert.getDialogPane().setContentText("Do you want to confirm?");
+        alert.getDialogPane().setContentText("Do you want to confirm?");
 
-                alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("delete.fxml")));
-                    stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
+        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("delete.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
 
 
     }
