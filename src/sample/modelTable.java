@@ -76,3 +76,5 @@ public class modelTable {
         this.Plastdate = new SimpleStringProperty(plastdate);
     }
 }
+
+
