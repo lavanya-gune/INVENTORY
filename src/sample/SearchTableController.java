@@ -2,6 +2,8 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +30,9 @@ public class SearchTableController implements Initializable {
     private Scene scene;
     private Parent root;
     private String connectQuery;
-    private Integer quantity;
 
+    @FXML
+    public TextField filterBox;
     @FXML
     public TableView<modelTable> tableView=new TableView<>();
     @FXML
@@ -54,23 +57,13 @@ public class SearchTableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String ProdCode = enteredProdCode.getText();
-        connectQuery = String.format("SELECT * FROM `inventory_management`.`product_details` where prod_code REGEXP '^%s'",ProdCode);
-        tableView.getItems().clear();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
 
-        col_prodCode.setCellValueFactory(new PropertyValueFactory<>("Pid"));
-        col_mfd.setCellValueFactory(new PropertyValueFactory<>("Pmfd"));
-        col_company.setCellValueFactory(new PropertyValueFactory<>("Pcompany"));
-        col_lastDate.setCellValueFactory(new PropertyValueFactory<>("Plastdate"));
-        col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("Pstock"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("Ptype"));
-        tableView.setItems(observableList);
+        String connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
 
         try {
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getConnection();
 
-//            connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
@@ -83,7 +76,48 @@ public class SearchTableController implements Initializable {
                         queryOutput.getString("company"),
                         queryOutput.getString("comment")));
             }
-        } catch (Exception e) {
+
+            col_prodCode.setCellValueFactory(new PropertyValueFactory<>("Pid"));
+            col_mfd.setCellValueFactory(new PropertyValueFactory<>("Pmfd"));
+            col_company.setCellValueFactory(new PropertyValueFactory<>("Pcompany"));
+            col_lastDate.setCellValueFactory(new PropertyValueFactory<>("Plastdate"));
+            col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("Pstock"));
+            col_type.setCellValueFactory(new PropertyValueFactory<>("Ptype"));
+            tableView.setItems(observableList);
+
+            FilteredList<modelTable> filteredData= new FilteredList<>(observableList, b->true);
+            filterBox.textProperty().addListener((observableValue, s, t1) -> {
+                filteredData.setPredicate(modelTable -> {
+                    if(t1==null || t1.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter=t1.toLowerCase();
+
+                    if(modelTable.getPcompany().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    if(String.valueOf(modelTable.getPid()).toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    if(modelTable.getPmfd().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    if(modelTable.getPstock().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    if(modelTable.getPtype().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    else
+                        return false;
+                });
+            });
+
+            SortedList<modelTable> sortedData=new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tableView.comparatorProperty());
+            tableView.setItems(sortedData);
+
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -121,32 +155,5 @@ public class SearchTableController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-    public void showRowDetails(ActionEvent event) {
-        ObservableList<modelTable> productList;
-        productList = tableView.getSelectionModel().getSelectedItems();
-        Integer selectedProdID = productList.get(0).getPid();
-
-//        connectQuery = String.format("DELETE FROM `inventory_management`.`product_details` WHERE u_ID IN ( SELECT pid FROM\n" +
-//                "(SELECT u_ID AS pid FROM `inventory_management`.`product_details` WHERE prod_code = %d) AS p );\n",selectedProdID);
-
-//        quantity = 5;
-//        connectQuery = String.format("UPDATE `inventory_management`.`product_details` SET quantity = %d WHERE u_ID = %d", quantity,selectedProdID);
-
-        System.out.println(connectQuery);
-
-        try {
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getConnection();
-
-            Statement statement = connectDB.createStatement();
-            statement.executeUpdate(connectQuery);
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }
-
 
