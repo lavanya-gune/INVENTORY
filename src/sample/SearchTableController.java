@@ -2,6 +2,8 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +32,8 @@ public class SearchTableController implements Initializable {
     private String connectQuery;
 
     @FXML
+    public TextField filterBox;
+    @FXML
     public TableView<modelTable> tableView=new TableView<>();
     @FXML
     public TableColumn<modelTable,Integer> col_prodCode=new TableColumn<>();
@@ -53,19 +57,13 @@ public class SearchTableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        col_prodCode.setCellValueFactory(new PropertyValueFactory<>("Pid"));
-        col_mfd.setCellValueFactory(new PropertyValueFactory<>("Pmfd"));
-        col_company.setCellValueFactory(new PropertyValueFactory<>("Pcompany"));
-        col_lastDate.setCellValueFactory(new PropertyValueFactory<>("Plastdate"));
-        col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("Pstock"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("Ptype"));
-        tableView.setItems(observableList);
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
 
         try {
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getConnection();
 
-            connectQuery = "SELECT * FROM `inventory_management`.`product_details`";
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
@@ -78,6 +76,47 @@ public class SearchTableController implements Initializable {
                         queryOutput.getString("company"),
                         queryOutput.getString("comment")));
             }
+
+            col_prodCode.setCellValueFactory(new PropertyValueFactory<>("Pid"));
+            col_mfd.setCellValueFactory(new PropertyValueFactory<>("Pmfd"));
+            col_company.setCellValueFactory(new PropertyValueFactory<>("Pcompany"));
+            col_lastDate.setCellValueFactory(new PropertyValueFactory<>("Plastdate"));
+            col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("Pstock"));
+            col_type.setCellValueFactory(new PropertyValueFactory<>("Ptype"));
+            tableView.setItems(observableList);
+
+            FilteredList<modelTable> filteredData= new FilteredList<>(observableList, b->true);
+            filterBox.textProperty().addListener((observableValue, s, t1) -> {
+                filteredData.setPredicate(modelTable -> {
+                    if(t1==null || t1.isEmpty()){
+                        return true;
+                    }
+                    String lowerCaseFilter=t1.toLowerCase();
+
+                    if(modelTable.getPcompany().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    if(String.valueOf(modelTable.getPid()).toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                        return true;
+                    }
+                    if(modelTable.getPmfd().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    if(modelTable.getPstock().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    if(modelTable.getPtype().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    else
+                        return false;
+                });
+            });
+
+            SortedList<modelTable> sortedData=new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tableView.comparatorProperty());
+            tableView.setItems(sortedData);
+
         } catch (Exception e){
             e.printStackTrace();
         }

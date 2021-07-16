@@ -25,5 +25,10 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Button>
+      <Button layoutX="450.0" layoutY="449.0" mnemonicParsing="false" onAction="#monthlylog" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #005575;" text="MONTHY LOG" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="25.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

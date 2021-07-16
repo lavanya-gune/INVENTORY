@@ -3,8 +3,44 @@
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddNewItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddNewItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DELETE_PUBLIC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DELETE_PUBLIC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Delete_Existing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/deleteLog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/deleteLog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddNewItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddNewItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DELETE_PUBLIC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DELETE_PUBLIC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteItemHistoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/deleteLog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/deleteLog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/modelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/modelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/third.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +58,18 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$/../../INVENTORY" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/sample/Controller.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/sample/Search.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/sample/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/sample/Controller.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/workspace.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/sample/Search.fxml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1vDlGd9WGE3SsgNYtuNAV5b0FV3" />
   <component name="ProjectViewState">
@@ -41,17 +81,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.18358831" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="16" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="INVENTORY" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\gopal2\Downloads\openjfx-16_windows-x64_bin-sdk\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\openjfx-16_windows-x64_bin-sdk\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.*" />
@@ -76,11 +118,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
