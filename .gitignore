@@ -1,2 +1,5 @@
-..\INVENTORY\.idea
-
+.idea
+Barcode
+lib
+INVENTORY.iml
+out
