@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
