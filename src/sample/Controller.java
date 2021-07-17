@@ -204,7 +204,7 @@ String stockImage;
 
     public void AddPart(ActionEvent actionEvent) {
 
-        String Partnumber = PartNumber.getText().toString();
+        String Partnumber = PartNumber.getText();
         String RefPartNumber = ReferencePartNumber.getText();
         String quantity = Quantity.getText();
         String addon = AddOn.getText();
@@ -563,7 +563,7 @@ String stockImage;
                 "`landing_pv`,\n" +
                 "`sell_v`,\n" +
                 "`stock_loc`,\n" +
-                "`tech_details`) VALUES ("+PartNumber+",'"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+TechDetails+"'"+")";
+                "`tech_details`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+TechDetails+"'"+")";
 //        System.out.print(connectQuery);
 
         try{
