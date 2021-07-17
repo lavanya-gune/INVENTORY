@@ -41,7 +41,6 @@ public class Controller implements Initializable {
     private Button choose;
     @FXML
     Button HOME;
-
     @FXML
     Label wrong;
 
@@ -167,7 +166,7 @@ String stockImage;
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", "*.jpg"));
         if (f != null) {
             choose.setText(f.getAbsolutePath());
-            stockImage =f.getAbsolutePath();
+            stockImage = f.getAbsolutePath();
         }
     }
 
@@ -205,18 +204,26 @@ String stockImage;
 
     public void AddPart(ActionEvent actionEvent) {
 
-        String Partnumber = PartNumber.getText();
-        String RefPartnumber = ReferencePartNumber.getText();
+        String Partnumber = PartNumber.getText().toString();
+        String RefPartNumber = ReferencePartNumber.getText();
         String quantity = Quantity.getText();
         String addon = AddOn.getText();
         String Sourceofpurchase = SourceOfPurchase.getText();
         String landingValue= LandingValue.getText();
         String sellvalue= SellValue.getText();
-        String PartFor = partFor.getValue().toString();
-        String company = Company.getValue().toString();
+        String PartFor = partFor.getValue();
+        String company = Company.getValue();
         String inventoryDate = InventoryDate.getValue().toString();
         String StockLocation = stockImage;
         String TechDetails = techDetails.getText();
+
+        PartFor = PartFor==null ? "" : PartFor.toString();
+        company = company==null ? "" : company.toString();
+        RefPartNumber = RefPartNumber==null ? "" : RefPartNumber.toString();
+
+
+
+
 
 //        Random rand= new Random();
 //
@@ -238,7 +245,7 @@ String stockImage;
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
-                //addData(Partnumber,RefPartnumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails);
+                addData(Partnumber,RefPartNumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails);
 
 //                Code128Bean code128 = new Code128Bean();
 //                String myString = PartNumber.getText() ;
@@ -517,7 +524,7 @@ String stockImage;
         stage.show();
     }
 
-    public void addData(String ProdCode,String PartFor,String TypeOfPart,String company,String ManufactureDate,String StockLocation,String LastDate,String TechDetails,String Comment){
+    public void addData(String PartNumber,String ReferencePartNumber,String AddOn,String Quantity,String PartFor,String Company,String InventoryDate,String SourceOfPurchase,String LandingPurchaseValue,String SellValue,String StockLocation,String TechDetails){
 
 
         DatabaseConnection connectNow = new DatabaseConnection();
@@ -545,7 +552,18 @@ String stockImage;
 
 
         //    ProductCode PartType partFor Company mfd lastDate techDetails comment
-        String connectQuery = "INSERT INTO `inventory_management`.`product_details` VALUES ("+ProdCode+",'"+PartFor+"','"+TypeOfPart+"','"+company+"','"+ManufactureDate+"','"+LastDate+"','"+StockLocation+"','"+TechDetails+"','"+Comment+"'"+")";
+        String connectQuery = "INSERT INTO `inventory_management`.`inward_item` (`part_no`,\n" +
+                "`ref_part_no`,\n" +
+                "`add_on`,\n" +
+                "`quantity`,\n" +
+                "`part_for`,\n" +
+                "`company`,\n" +
+                "`inventory_date`,\n" +
+                "`source_of_p`,\n" +
+                "`landing_pv`,\n" +
+                "`sell_v`,\n" +
+                "`stock_loc`,\n" +
+                "`tech_details`) VALUES ("+PartNumber+",'"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+TechDetails+"'"+")";
 //        System.out.print(connectQuery);
 
         try{
