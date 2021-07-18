@@ -290,7 +290,7 @@ String stockImage;
         String company = Company.getValue();
         String inventoryDate = InventoryDate.getValue().toString();
         String StockLocation = stockImage;
-        String TechDetails = techDetails.getText();
+        String TechDetails = "";
         String Comment = "";
 
         String setOf = setof.getText();
