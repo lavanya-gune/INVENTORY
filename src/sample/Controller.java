@@ -369,8 +369,6 @@ String stockImage;
         String setOf = "";
         String Prefix = "";
 
-        RefPartNumber = RefPartNumber==null ? "" : RefPartNumber.toString();
-
 //        Random rand= new Random();
 //        UPC.setText(myString);
 
@@ -598,5 +596,76 @@ String stockImage;
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void AddExistingEdit(ActionEvent event) {
+        String Partnumber = PartNumber.getText();
+        String RefPartNumber = ReferencePartNumber.getText();
+        String quantity = Quantity.getText();
+        String addon = AddOn.getText();
+        String Sourceofpurchase = SourceOfPurchase.getText();
+        String landingValue= LandingValue.getText();
+        String sellvalue= SellValue.getText();
+        String PartFor = "";
+        String company = "";
+        String inventoryDate = InventoryDate.getValue().toString();
+        String StockLocation = stockImage;
+        String TechDetails = "";
+        String Comment = "";
+
+        String setOf = setof.getText();
+        String Prefix = prefix.getValue();
+
+        RefPartNumber = RefPartNumber==null ? "" : RefPartNumber.toString();
+
+//        Random rand= new Random();
+//        UPC.setText(myString);
+
+        try {
+
+            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+            Alert alert = new Alert(type, "");
+
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(stage);
+
+            alert.getDialogPane().setContentText("Do you want to confirm?");
+
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ButtonType.OK) {
+                addData(Partnumber,RefPartNumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, TechDetails,setOf, Prefix, Comment);
+
+//                Code128Bean code128 = new Code128Bean();
+//                String myString = PartNumber.getText() ;
+//                String image_name = PartNumber.getText() + ".png";
+//                code128.setHeight(15f);
+//                code128.setModuleWidth(0.3);
+//                code128.setQuietZone(10);
+//                code128.doQuietZone(true);
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+//                code128.generateBarcode(canvas, myString);
+//                canvas.finish();
+//                //write to png file
+//                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
+//                fos.write(baos.toByteArray());
+//                fos.flush();
+//                fos.close();
+
+
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
