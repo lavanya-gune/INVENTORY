@@ -29,13 +29,21 @@
         <TextField layoutX="877.0" layoutY="60.0" prefHeight="25.0" prefWidth="241.0" />
         <TableView fx:id="tableView" layoutX="16.0" layoutY="102.0" prefHeight="531.0" prefWidth="1259.0">
             <columns>
-<!--                <TableColumn fx:id="col_quantity" prefWidth="150.66665077209473" text="QUANTITY" />-->
-                <TableColumn fx:id="col_prodCode" minWidth="0.0" prefWidth="153.33335876464844" text="PRODUCT CODE" />
-                <TableColumn fx:id="col_mfd" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="DATE OF MANUFACTURE" />
-                <TableColumn fx:id="col_type" prefWidth="154.66665649414062" text="TYPE" />
-                <TableColumn fx:id="col_company" prefWidth="190.66668701171875" text="COMPANY" />
-                <TableColumn fx:id="col_stockLocation" minWidth="0.0" prefWidth="216.6666259765625" text="STOCK LOCATION" />
-                <TableColumn fx:id="col_lastDate" minWidth="0.0" prefWidth="217.333251953125" text="LAST DATE" />
+                <TableColumn fx:id="col_partNo" minWidth="0.0" prefWidth="153.33335876464844" text="PART NUMBER" />
+                <TableColumn fx:id="col_refPartNo" minWidth="0.0" prefWidth="153.33335876464844" text="REFERENCE PART NUMBER" />
+                <TableColumn fx:id="col_addOn" minWidth="0.0" prefWidth="153.33335876464844" text="ADD ON" />
+                <TableColumn fx:id="col_quantity" minWidth="0.0" prefWidth="153.33335876464844" text="QUANTITY" />
+                <TableColumn fx:id="col_partFor" minWidth="0.0" prefWidth="153.33335876464844" text="PART FOR" />
+                <TableColumn fx:id="col_company" minWidth="0.0" prefWidth="153.33335876464844" text="COMPANY" />
+                <TableColumn fx:id="col_inventoryDate" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="INVENTORY DATE" />
+                <TableColumn fx:id="col_sourceOfPurchase" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="INVENTORY DATE" />
+                <TableColumn fx:id="col_landingPurchaseValue" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="LANDING PURCHASE VALUE" />
+                <TableColumn fx:id="col_sellingValue" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="SELLING VALUE" />
+                <TableColumn fx:id="col_stockLocation" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="STOCK LOCATION" />
+                <TableColumn fx:id="col_techDetails" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="TECH DETAILS" />
+                <TableColumn fx:id="col_setOf" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="SET OF" />
+                <TableColumn fx:id="col_prefix" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="PREFIX" />
+                <TableColumn fx:id="col_comment" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="COMMENT" />
             </columns>
         </TableView>
         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="578.0" layoutY="52.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#retrieveSearchedItems" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #005575;" text="ENTER" textAlignment="CENTER" textFill="WHITE">
@@ -50,3 +58,4 @@
       </Button>
     </children>
 </AnchorPane>
+

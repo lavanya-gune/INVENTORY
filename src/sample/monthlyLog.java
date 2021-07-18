@@ -35,30 +35,57 @@ public class monthlyLog  implements Initializable {
     @FXML
     public TableView<modelTable> tableView = new TableView<>();
     @FXML
-    public TableColumn<modelTable, Integer> col_prodCode = new TableColumn<>();
+    public TableColumn<modelTable,String> col_partNo=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_mfd = new TableColumn<>();
+    public TableColumn<modelTable,String> col_refPartNo=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_company = new TableColumn<>();
+    public TableColumn<modelTable,String> col_addOn=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_lastDate = new TableColumn<>();
+    public TableColumn<modelTable,Integer> col_quantity=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_stockLocation = new TableColumn<>();
+    public TableColumn<modelTable,String> col_partFor=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_type = new TableColumn<>();
+    public TableColumn<modelTable,String> col_company=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_inventoryDate=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_sourceOfPurchase=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,Integer> col_landingPurchaseValue=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,Integer> col_sellingValue=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_stockLocation=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_techDetails=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_setOf=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_prefix=new TableColumn<>();
+    @FXML
+    public TableColumn<modelTable,String> col_comment=new TableColumn<>();
+
 
 
     ObservableList<modelTable> observableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        col_prodCode.setCellValueFactory(new PropertyValueFactory<>("Pid"));
-        col_mfd.setCellValueFactory(new PropertyValueFactory<>("Pmfd"));
-        col_company.setCellValueFactory(new PropertyValueFactory<>("Pcompany"));
-        col_lastDate.setCellValueFactory(new PropertyValueFactory<>("Plastdate"));
-        col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("Pstock"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("Ptype"));
+        col_partNo.setCellValueFactory(new PropertyValueFactory<>("P_partNumber"));
+        col_refPartNo.setCellValueFactory(new PropertyValueFactory<>("P_refPartNumber"));
+        col_addOn.setCellValueFactory(new PropertyValueFactory<>("P_addOn"));
+        col_quantity.setCellValueFactory(new PropertyValueFactory<>("P_quantity"));
+        col_partFor.setCellValueFactory(new PropertyValueFactory<>("P_partFor"));
+        col_company.setCellValueFactory(new PropertyValueFactory<>("P_company"));
+        col_inventoryDate.setCellValueFactory(new PropertyValueFactory<>("P_invDate"));
+        col_inventoryDate.setCellValueFactory(new PropertyValueFactory<>("P_sourceOfPurchase"));
+        col_landingPurchaseValue.setCellValueFactory(new PropertyValueFactory<>("P_landingPurchaseValue"));
+        col_sellingValue.setCellValueFactory(new PropertyValueFactory<>("P_sellingValue"));
+        col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
+        col_techDetails.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
+        col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
+        col_prefix.setCellValueFactory(new PropertyValueFactory<>("P_prefix"));
+        col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
         tableView.setItems(observableList);
 
         try {
@@ -71,11 +98,20 @@ public class monthlyLog  implements Initializable {
 
             while (queryOutput.next()) {
                 observableList.add(new modelTable(
-                        queryOutput.getInt("prod_code"),
-                        queryOutput.getString("mfd"),
-                        queryOutput.getString("last_date"),
-                        queryOutput.getString("stock_location"),
+                        queryOutput.getString("part_no"),
+                        queryOutput.getString("ref_part_no"),
+                        queryOutput.getString("add_on"),
+                        queryOutput.getInt("quantity"),
+                        queryOutput.getString("part_for"),
                         queryOutput.getString("company"),
+                        queryOutput.getString("inventory_date"),
+                        queryOutput.getString("source_of_p"),
+                        queryOutput.getInt("landing_pv"),
+                        queryOutput.getInt("sell_v"),
+                        queryOutput.getString("stock_loc"),
+                        queryOutput.getString("tech_details"),
+                        queryOutput.getString("setof"),
+                        queryOutput.getString("prefix"),
                         queryOutput.getString("comment")));
             }
         } catch (Exception e) {
@@ -98,11 +134,20 @@ public class monthlyLog  implements Initializable {
 
                 while(queryOutput.next()) {
                     observableList.add(new modelTable(
-                            queryOutput.getInt("prod_code"),
-                            queryOutput.getString("mfd"),
-                            queryOutput.getString("last_date"),
-                            queryOutput.getString("stock_location"),
+                            queryOutput.getString("part_no"),
+                            queryOutput.getString("ref_part_no"),
+                            queryOutput.getString("add_on"),
+                            queryOutput.getInt("quantity"),
+                            queryOutput.getString("part_for"),
                             queryOutput.getString("company"),
+                            queryOutput.getString("inventory_date"),
+                            queryOutput.getString("source_of_p"),
+                            queryOutput.getInt("landing_pv"),
+                            queryOutput.getInt("sell_v"),
+                            queryOutput.getString("stock_loc"),
+                            queryOutput.getString("tech_details"),
+                            queryOutput.getString("setof"),
+                            queryOutput.getString("prefix"),
                             queryOutput.getString("comment")));
                 }
             } catch (Exception e){
@@ -116,5 +161,5 @@ public class monthlyLog  implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-        }
+}
 

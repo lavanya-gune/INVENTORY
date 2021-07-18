@@ -14,25 +14,24 @@
 
 <AnchorPane fx:id="myAnchorPane" minHeight="650.0" minWidth="1290.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C4FCF0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <GridPane alignment="CENTER" layoutX="350.0" layoutY="40.0" minWidth="730.0" prefHeight="520.0" prefWidth="730.0">
+        <GridPane alignment="CENTER" layoutX="250.0" layoutY="40.0" minWidth="730.0" prefHeight="537.0" prefWidth="816.0">
             <columnConstraints>
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="900.0" minWidth="30.0" prefWidth="730.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="900.0" minWidth="30.0" prefWidth="900.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="126.4000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="35.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="35.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="64.00000000000001" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="7.333338419596345" prefHeight="34.99998982747397" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="38.66664123535156" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="39.33333333333334" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="40.66667683919269" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="8.333333333333314" prefHeight="57.99998982747394" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <AnchorPane prefHeight="58.0" prefWidth="873.0">
@@ -42,12 +41,12 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="PartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <TextField fx:id="PartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                     <children>
-                        <ChoiceBox fx:id="partFor" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <ChoiceBox fx:id="partFor" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="PART FOR" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
@@ -57,7 +56,7 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                     <children>
-                        <ChoiceBox fx:id="Company" layoutX="415.0" layoutY="10.0" prefWidth="300.0" />
+                        <ChoiceBox fx:id="Company" layoutX="415.0" layoutY="10.0" prefWidth="400.0" />
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="COMPANY" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
@@ -67,7 +66,7 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
                     <children>
-                        <DatePicker fx:id="InventoryDate" layoutX="415.0" layoutY="10.0" prefWidth="300.0" />
+                        <DatePicker fx:id="InventoryDate" layoutX="415.0" layoutY="10.0" prefWidth="400.0" />
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="INVENTORY DATE" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
@@ -77,40 +76,26 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                     <children>
-                        <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="SOURCE OF PURCHASE" textAlignment="CENTER">
+                        <Text layoutX="26.0" layoutY="40.0" strokeType="OUTSIDE" text="SOURCE OF PURCHASE" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextArea fx:id="SourceOfPurchase" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter your details">
+                        <TextArea fx:id="SourceOfPurchase" layoutX="415.0" layoutY="1.0" minHeight="30.0" prefHeight="59.0" prefWidth="400.0" promptText="Enter your details">
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
                         </TextArea>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="12">
+                <AnchorPane prefHeight="28.0" prefWidth="730.0" GridPane.rowIndex="12">
                     <children>
-                        <Button fx:id="choose" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#singleFileChooser" prefWidth="300.0" text="Choose File" />
+                        <Button fx:id="choose" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#singleFileChooser" prefWidth="400.0" text="Choose File" />
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="STOCK LOCATION" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="13">
-                    <children>
-                        <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="TECHNICAL DETAILS" textAlignment="CENTER">
-                            <font>
-                                <Font name="Arial Bold" size="18.0" />
-                            </font>
-                        </Text>
-                        <TextArea fx:id="techDetails" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter your details">
-                            <font>
-                                <Font name="Arial Black" size="14.0" />
-                            </font>
-                        </TextArea>
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -120,7 +105,7 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="Quantity" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <TextField fx:id="Quantity" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -130,17 +115,17 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="ReferencePartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <TextField fx:id="ReferencePartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <children>
-                        <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="ADD-ON" textAlignment="CENTER">
+                        <Text layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" text="ADD-ON" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextArea fx:id="AddOn" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter your details">
+                        <TextArea fx:id="AddOn" layoutX="415.0" layoutY="4.0" minHeight="30.0" prefHeight="61.0" prefWidth="400.0" promptText="Enter your details">
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
@@ -154,7 +139,7 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="LandingValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <TextField fx:id="LandingValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
@@ -164,7 +149,7 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="SellValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <TextField fx:id="SellValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
@@ -174,22 +159,23 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="setof" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                        <TextField fx:id="setof" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
+                <AnchorPane prefHeight="35.0" prefWidth="730.0" GridPane.rowIndex="11">
                     <children>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="PREFIX" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                  <ChoiceBox fx:id="prefix" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
+                  <ChoiceBox fx:id="prefix" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
                     </children>
                 </AnchorPane>
             </children>
         </GridPane>
-        <Button fx:id="Submit" layoutX="627.0" layoutY="596.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#AddSys" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
+
+        <Button fx:id="Submit" layoutX="558.0" layoutY="596.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#AddSystem" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
             <font>
                 <Font name="Arial Black" size="18.0" />
             </font>

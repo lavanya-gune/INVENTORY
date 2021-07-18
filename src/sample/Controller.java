@@ -277,7 +277,7 @@ String stockImage;
             // TODO: handle exception
         }
     }
-    public void AddSys(ActionEvent actionEvent) {
+    public void AddSystem(ActionEvent actionEvent) {
 
         String Partnumber = PartNumber.getText();
         String RefPartNumber = ReferencePartNumber.getText();
@@ -586,6 +586,14 @@ String stockImage;
 
     public void monthlylog(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("monthly log.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goAddExistingEdit(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddExistingEdit.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

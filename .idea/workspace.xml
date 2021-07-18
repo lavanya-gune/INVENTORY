@@ -2,7 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExistingEdit.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/AddExistingEdit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INVENTORY.iml" beforeDir="false" afterPath="$PROJECT_DIR$/INVENTORY.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class~a68717d30b675752d15d421133b94f0629b5a11a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/modelTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/modelTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/modelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/modelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/monthlyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/monthlyLog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +43,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$/../../INVENTORY" value="master" />
+        <entry key="$USER_HOME$/INVENTORY" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +66,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.18358831" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
