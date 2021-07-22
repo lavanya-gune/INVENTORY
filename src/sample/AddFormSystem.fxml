@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="myAnchorPane" minHeight="650.0" minWidth="1290.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C4FCF0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <GridPane alignment="CENTER" layoutX="350.0" layoutY="40.0" minWidth="730.0" prefHeight="511.0" prefWidth="730.0">
+        <GridPane alignment="CENTER" layoutX="350.0" layoutY="40.0" minWidth="730.0" prefHeight="539.0" prefWidth="730.0">
             <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="900.0" minWidth="30.0" prefWidth="730.0" />
             </columnConstraints>
@@ -30,6 +30,8 @@
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="69.66666666666669" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="45.33332316080731" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="42.66667683919269" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="42.66667683919269" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="42.66667683919269" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="44.666666666666686" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
@@ -100,7 +102,7 @@
                         </TextArea>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="12">
                     <children>
                         <Button fx:id="choose" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#singleFileChooser" prefWidth="300.0" text="Choose File">
                             <font>
@@ -194,6 +196,30 @@
                         </Label>
                     </children>
                 </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
+               <children>
+                  <Text layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" text="SET-OF" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="setof" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
+               <children>
+                  <Text layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" text="PREFIX" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="prefix" layoutX="415.0" layoutY="10.0" prefWidth="300.0" />
+               </children>
+            </AnchorPane>
             </children>
         </GridPane>
         <Button fx:id="Submit" layoutX="627.0" layoutY="596.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#AddSystem" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
