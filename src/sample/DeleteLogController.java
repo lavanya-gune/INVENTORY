@@ -260,11 +260,10 @@ public class DeleteLogController implements Initializable {
                 "`prefix`,\n" +
                 "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_landingPurchaseValue()+"','"+selectedItems.get(0).getP_sellingValue()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
 
-//        String connectQuery1 = String.format("DELETE FROM `inventory_management`.`inward_item` WHERE part_no = '%s'", selectedProdID);
 //        String selectedquantity=selectedQuantity.getText();
-        String connectQuery1 = String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedItems.get(0).getP_quantity(),selectedProdID);
 
-//        String connectQuery2 = String.format("UPDATE `deletelog`.`outward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM deletelog.outward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedquantity,selectedProdID);
+//        String connectQuery2 = String.format("SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",);
+        String connectQuery1 = String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedItems.get(0).getP_quantity(),selectedProdID);
 
 
         try {
@@ -279,7 +278,7 @@ public class DeleteLogController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItem());
+        observableList.removeAll(selectedItems);
 
     }
 

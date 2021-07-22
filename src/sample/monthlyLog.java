@@ -123,7 +123,6 @@ public class monthlyLog  implements Initializable {
             LocalDate startDate=startdatelog.getValue();
             LocalDate endDate=enddatelog.getValue();
             String connectQuery = "SELECT * from `deletelog`.`deletemaster` where inventory_date between '" + startDate + "' and '" + endDate + "'";
-            System.out.println(connectQuery);
             tableView.getItems().clear();
 
             try {
