@@ -533,7 +533,7 @@ String stockImage;
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String connectQuery = "INSERT INTO `inventory_management`.`inward_item` (`part_no`,\n" +
+        String connectQuery1 = "INSERT INTO `inventory_management`.`inward_item` (`part_no`,\n" +
                 "`ref_part_no`,\n" +
                 "`add_on`,\n" +
                 "`quantity`,\n" +
@@ -548,11 +548,26 @@ String stockImage;
                 "`setof`,\n" +
                 "`prefix`,\n" +
                 "`comment`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+TechDetails+"','"+setof+"','"+prefix+"','"+Comment+"'"+")";
-//        System.out.print(connectQuery);
 
+        String connectQuery2 = "INSERT INTO `deletelog`.`deletemaster` (`part_no`,\n" +
+                "`ref_part_no`,\n" +
+                "`add_on`,\n" +
+                "`quantity`,\n" +
+                "`part_for`,\n" +
+                "`company`,\n" +
+                "`inventory_date`,\n" +
+                "`source_of_p`,\n" +
+                "`landing_pv`,\n" +
+                "`sell_v`,\n" +
+                "`stock_loc`,\n" +
+                "`tech_details`,\n" +
+                "`setof`,\n" +
+                "`prefix`,\n" +
+                "`comment`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+TechDetails+"','"+setof+"','"+prefix+"','"+Comment+"'"+")";
         try{
             Statement statement = connectDB.createStatement();
-            statement.executeUpdate(connectQuery);
+            statement.executeUpdate(connectQuery1);
+            statement.executeUpdate(connectQuery2);
         } catch (Exception e) {
             e.printStackTrace();
         }
