@@ -118,10 +118,11 @@ public class monthlyLog  implements Initializable {
             e.printStackTrace();
         }
     }
+
         public void monthlyLog(ActionEvent actionEvent) {
             LocalDate startDate=startdatelog.getValue();
             LocalDate endDate=enddatelog.getValue();
-            String connectQuery = "select * from product_details where mfd between '" + startDate + "' and '" + endDate + "'";
+            String connectQuery = "SELECT * from `deletelog`.`deletemaster` where inventory_date between '" + startDate + "' and '" + endDate + "'";
             System.out.println(connectQuery);
             tableView.getItems().clear();
 
