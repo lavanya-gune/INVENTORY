@@ -19,6 +19,7 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
@@ -28,7 +29,7 @@
                 <RowConstraints maxHeight="130.39999389648438" minHeight="10.0" prefHeight="58.39999084472656" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <children>
                         <DatePicker fx:id="InventoryDate" layoutX="415.0" layoutY="10.0" prefWidth="300.0" />
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="INVENTORY DATE" textAlignment="CENTER">
@@ -38,7 +39,7 @@
                         </Text>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                     <children>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="SOURCE OF PURCHASE" textAlignment="CENTER">
                             <font>
@@ -52,7 +53,7 @@
                         </TextArea>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
                     <children>
                         <Button fx:id="choose" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#singleFileChooser" prefWidth="300.0" text="Choose File" />
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="STOCK LOCATION" textAlignment="CENTER">
@@ -62,7 +63,7 @@
                         </Text>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                     <children>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="TECHNICAL DETAILS" textAlignment="CENTER">
                             <font>
@@ -76,9 +77,9 @@
                         </TextArea>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
                     <children>
-                        <TextArea fx:id="AddOn" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter your details">
+                        <TextArea fx:id="MiscComment" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="30.0" prefWidth="300.0" promptText="Enter your details">
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
@@ -90,7 +91,7 @@
                         </Text>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <children>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="QUANTITY" textAlignment="CENTER">
                             <font>
@@ -100,7 +101,7 @@
                         <TextField fx:id="Quantity" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                     <children>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="LANDING PURCHASE VALUE" textAlignment="CENTER">
                             <font>
@@ -110,7 +111,7 @@
                         <TextField fx:id="LandingValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                     <children>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="SELL VALUE" textAlignment="CENTER">
                             <font>
@@ -120,9 +121,19 @@
                         <TextField fx:id="SellValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" />
                     </children>
                 </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Text layoutX="25.0" layoutY="35.0" strokeType="OUTSIDE" text="PART NUMBER" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="PartNumber" layoutX="416.0" layoutY="16.0" prefHeight="26.0" prefWidth="300.0" />
+                    </children>
+                </AnchorPane>
             </children>
         </GridPane>
-        <Button fx:id="Submit" layoutX="627.0" layoutY="596.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#AddMISC" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
+        <Button fx:id="Submit" layoutX="627.0" layoutY="596.0" minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#AddMisc" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
             <font>
                 <Font name="Arial Black" size="18.0" />
             </font>
