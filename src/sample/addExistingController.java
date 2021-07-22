@@ -34,7 +34,7 @@ public class addExistingController implements Initializable {
     @FXML
     private TextField selectedQuantity;
     @FXML
-    public TextField filterBox;
+    public TextField filterBox=new TextField();
     @FXML
     public TableView<modelTable> tableView = new TableView<>();
     @FXML
