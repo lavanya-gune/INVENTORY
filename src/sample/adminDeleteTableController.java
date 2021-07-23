@@ -26,7 +26,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class DeleteTableController implements Initializable {
+public class adminDeleteTableController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -39,40 +39,44 @@ public class DeleteTableController implements Initializable {
     @FXML
     public TextField filterBox;
     @FXML
-    public TableView<modelTable> tableView = new TableView<>();
+    public TableView<adminModelTable> tableView = new TableView<>();
     @FXML
-    public TableColumn<modelTable, String> col_partNo = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_partNo = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_refPartNo = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_refPartNo = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_addOn = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_addOn = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, Integer> col_quantity = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_quantity = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_partFor = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_partFor = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_company = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_company = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_inventoryDate = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_inventoryDate = new TableColumn<>();
     @FXML
     public TableColumn<adminModelTable, String> col_sourceOfPurchase = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_stockLocation = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_landingPurchaseValue = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_techDetails = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_sellingValue = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_setOf = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_stockLocation = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_prefix = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_techDetails = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_comment = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_setOf = new TableColumn<>();
+    @FXML
+    public TableColumn<adminModelTable, String> col_prefix = new TableColumn<>();
+    @FXML
+    public TableColumn<adminModelTable, String> col_comment = new TableColumn<>();
 
 
     @FXML
     private TextField enteredProdCode;
 
 
-    ObservableList<modelTable> observableList = FXCollections.observableArrayList();
+    ObservableList<adminModelTable> observableList = FXCollections.observableArrayList();
 
 
     @Override
@@ -89,7 +93,7 @@ public class DeleteTableController implements Initializable {
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
             while (queryOutput.next()) {
-                observableList.add(new modelTable(
+                observableList.add(new adminModelTable(
                         queryOutput.getString("part_no"),
                         queryOutput.getString("ref_part_no"),
                         queryOutput.getString("add_on"),
@@ -98,6 +102,8 @@ public class DeleteTableController implements Initializable {
                         queryOutput.getString("company"),
                         queryOutput.getString("inventory_date"),
                         queryOutput.getString("source_of_p"),
+                        queryOutput.getInt("landing_pv"),
+                        queryOutput.getInt("sell_v"),
                         queryOutput.getString("stock_loc"),
                         queryOutput.getString("tech_details"),
                         queryOutput.getString("setof"),
@@ -113,6 +119,8 @@ public class DeleteTableController implements Initializable {
             col_company.setCellValueFactory(new PropertyValueFactory<>("P_company"));
             col_inventoryDate.setCellValueFactory(new PropertyValueFactory<>("P_invDate"));
             col_sourceOfPurchase.setCellValueFactory(new PropertyValueFactory<>("P_sourceOfPurchase"));
+            col_landingPurchaseValue.setCellValueFactory(new PropertyValueFactory<>("P_landingPurchaseValue"));
+            col_sellingValue.setCellValueFactory(new PropertyValueFactory<>("P_sellingValue"));
             col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
             col_techDetails.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
             col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
@@ -120,7 +128,7 @@ public class DeleteTableController implements Initializable {
             col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
             tableView.setItems(observableList);
 
-            FilteredList<modelTable> filteredData = new FilteredList<>(observableList, b -> true);
+            FilteredList<adminModelTable> filteredData = new FilteredList<>(observableList, b -> true);
             filterBox.textProperty().addListener((observableValue, s, t1) -> {
                 filteredData.setPredicate(modelTable -> {
                     if (t1 == null || t1.isEmpty()) {
@@ -147,7 +155,7 @@ public class DeleteTableController implements Initializable {
                 });
             });
 
-            SortedList<modelTable> sortedData = new SortedList<>(filteredData);
+            SortedList<adminModelTable> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(tableView.comparatorProperty());
             tableView.setItems(sortedData);
 
@@ -231,22 +239,9 @@ public class DeleteTableController implements Initializable {
 //    }
 
     public void DeleteLog(ActionEvent actionEvent) throws IOException {
-        ObservableList<modelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
+        ObservableList<adminModelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
         String selectedProdID = selectedItems.get(0).getP_partNumber();
-        String connectQuery = "INSERT INTO `deletelog`.`outward_item` (\n" +
-                "`part_no`,\n" +
-                "`ref_part_no`,\n" +
-                "`add_on`,\n" +
-                "`quantity`,\n" +
-                "`part_for`,\n" +
-                "`company`,\n" +
-                "`inventory_date`,\n" +
-                "`source_of_p`,\n" +
-                "`stock_loc`,\n" +
-                "`tech_details`,\n" +
-                "`setof`,\n" +
-                "`prefix`,\n" +
-                "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
+
 
 //        String connectQuery1 = String.format("DELETE FROM `inventory_management`.`inward_item` WHERE part_no = '%s'", selectedProdID);
         String selectedquantity=selectedQuantity.getText();
@@ -254,36 +249,14 @@ public class DeleteTableController implements Initializable {
 
 
 
-
-
-        String connectQuery3 = "INSERT INTO `deletelog`.`outward_item` (\n" +
-                "`part_no`,\n" +
-                "`ref_part_no`,\n" +
-                "`add_on`,\n" +
-                "`quantity`,\n" +
-                "`part_for`,\n" +
-                "`company`,\n" +
-                "`inventory_date`,\n" +
-                "`sell_v`,\n" +
-                "`stock_loc`,\n" +
-                "`tech_details`,\n" +
-                "`setof`,\n" +
-                "`prefix`,\n" +
-                "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedquantity+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
-
-//         String connectQuery2 = String.format("UPDATE `deletelog`.`outward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM deletelog.outward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedquantity,selectedProdID);
-
-
-//        String connectQuery2 = String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedquantity,selectedProdID);
+        String connectQuery2 = String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedquantity,selectedProdID);
 
         try {
             DatabaseConnectionDelete connectNow = new DatabaseConnectionDelete();
             Connection connectDB = connectNow.getConnection();
 
             Statement statement = connectDB.createStatement();
-//            statement.executeUpdate(connectQuery);
-//            statement.executeUpdate(connectQuery2);
-            statement.executeUpdate(connectQuery3);
+            statement.executeUpdate(connectQuery2);
 
 
 
