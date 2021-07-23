@@ -23,10 +23,10 @@
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="40.333328247070305" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="41.000010172526046" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="86.99998982747394" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="40.333333333333314" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="38.66668701171878" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="60.666666666666686" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="126.4000244140625" minHeight="10.0" prefHeight="104.66666666666669" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="50.00001017252606" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="52.666656494140625" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="125.8000244140625" minHeight="10.0" prefHeight="56.33335367838538" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="126.4000244140625" minHeight="10.0" prefHeight="120.33333333333337" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -53,12 +53,12 @@
                         </Text>
                         <TextArea fx:id="SourceOfPurchase" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="77.0" prefWidth="300.0" promptText="Enter your details">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </TextArea>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+                <AnchorPane prefHeight="54.0" prefWidth="730.0" GridPane.rowIndex="6">
                     <children>
                         <Button fx:id="choose" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#singleFileChooser" prefWidth="300.0" text="Choose File">
                             <font>
@@ -80,7 +80,7 @@
                         </Text>
                         <TextArea fx:id="MiscComment" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="95.0" prefWidth="300.0" promptText="Enter your details">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </TextArea>
                     </children>
@@ -92,9 +92,9 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="Quantity" alignment="CENTER" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="Quantity" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="124.0" layoutY="9.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
@@ -112,7 +112,7 @@
                         </Text>
                         <TextField fx:id="LandingValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="280.0" layoutY="4.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
@@ -130,7 +130,7 @@
                         </Text>
                         <TextField fx:id="SellValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="138.0" layoutY="9.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
@@ -146,9 +146,9 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="PartNumber" alignment="CENTER" layoutX="416.0" layoutY="16.0" prefHeight="26.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="PartNumber" layoutX="416.0" layoutY="16.0" prefHeight="26.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="163.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>

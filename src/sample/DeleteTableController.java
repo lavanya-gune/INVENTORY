@@ -11,10 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DeleteTableController implements Initializable {
@@ -32,48 +33,50 @@ public class DeleteTableController implements Initializable {
     private String connectQuery;
 
     @FXML
+    AnchorPane myAnchorPane;
+    @FXML
     private TextField selectedQuantity;
     @FXML
     public TextField filterBox;
     @FXML
-    public TableView<modelTable> tableView = new TableView<>();
+    public TableView<adminModelTable> tableView = new TableView<>();
     @FXML
-    public TableColumn<modelTable, String> col_partNo = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_partNo = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_refPartNo = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_refPartNo = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_addOn = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_addOn = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, Integer> col_quantity = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_quantity = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_partFor = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_partFor = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_company = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_company = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_inventoryDate = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_inventoryDate = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_sourceOfPurchase = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_sourceOfPurchase = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, Integer> col_landingPurchaseValue = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_landingPurchaseValue = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, Integer> col_sellingValue = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_sellingValue = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_stockLocation = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_stockLocation = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_techDetails = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_techDetails = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_setOf = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_setOf = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_prefix = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_prefix = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_comment = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_comment = new TableColumn<>();
 
 
     @FXML
     private TextField enteredProdCode;
 
 
-    ObservableList<modelTable> observableList = FXCollections.observableArrayList();
+    ObservableList<adminModelTable> observableList = FXCollections.observableArrayList();
 
 
     @Override
@@ -90,7 +93,7 @@ public class DeleteTableController implements Initializable {
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
             while (queryOutput.next()) {
-                observableList.add(new modelTable(
+                observableList.add(new adminModelTable(
                         queryOutput.getString("part_no"),
                         queryOutput.getString("ref_part_no"),
                         queryOutput.getString("add_on"),
@@ -125,7 +128,7 @@ public class DeleteTableController implements Initializable {
             col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
             tableView.setItems(observableList);
 
-            FilteredList<modelTable> filteredData = new FilteredList<>(observableList, b -> true);
+            FilteredList<adminModelTable> filteredData = new FilteredList<>(observableList, b -> true);
             filterBox.textProperty().addListener((observableValue, s, t1) -> {
                 filteredData.setPredicate(modelTable -> {
                     if (t1 == null || t1.isEmpty()) {
@@ -152,7 +155,7 @@ public class DeleteTableController implements Initializable {
                 });
             });
 
-            SortedList<modelTable> sortedData = new SortedList<>(filteredData);
+            SortedList<adminModelTable> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(tableView.comparatorProperty());
             tableView.setItems(sortedData);
 
@@ -211,32 +214,32 @@ public class DeleteTableController implements Initializable {
 //
 
     //    }
-    public void goLogin(javafx.event.ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goSearch(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Search.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goDELETE_PUBLIC(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DELETE_PUBLIC.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+//    public void goLogin(javafx.event.ActionEvent actionEvent) throws IOException {
+//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+//        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//
+//    public void goSearch(ActionEvent actionEvent) throws IOException {
+//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminSearch.fxml")));
+//        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//
+//    public void goDELETE_PUBLIC(ActionEvent actionEvent) throws IOException {
+//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DELETE_PUBLIC.fxml")));
+//        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 
     public void DeleteLog(ActionEvent actionEvent) throws IOException {
-        ObservableList<modelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
+        ObservableList<adminModelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
         String selectedProdID = selectedItems.get(0).getP_partNumber();
         String connectQuery = "INSERT INTO `deletelog`.`outward_item` (\n" +
                 "`part_no`,\n" +
@@ -299,13 +302,33 @@ public class DeleteTableController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
+
+        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+        Alert alert = new Alert(type, "");
+
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+
+        alert.getDialogPane().setContentText("Do you want to confirm?");
+
+        alert.getDialogPane().setHeaderText("Are you sure you want to delete"+Integer.parseInt(selectedquantity)+"of selected product.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
+//        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
     }
 
-    public void retrieveSearchedItems(ActionEvent actionEvent) {
-    }
+//    public void retrieveSearchedItems(ActionEvent actionEvent) {
+//    }
 }
