@@ -237,7 +237,7 @@ String stockImage;
                     b = 0;
                 }
             }
-            int ans = ctr * b;
+            int ans1 = ctr * b;
 
 
         String Partnumber = PartNumber.getText();
@@ -246,7 +246,29 @@ String stockImage;
         String addon = AddOn.getText();
         String Sourceofpurchase = SourceOfPurchase.getText();
         String landingValue= LandingValue.getText();
+        int l2 = landingValue.length();
+            int ctr2 = 1;
+            int a = 1;
+            for (int i = 0; i < l; i++) {
+                if (landingValue.charAt(i) >= '0' && landingValue.charAt(i) <= '9') {
+                    ctr2++;
+                } else {
+                    a = 0;
+                }
+            }
+            int ans2 = ctr2 * a;
         String sellvalue= SellValue.getText();
+            int l3 = sellvalue.length();
+            int ctr3 = 1;
+            int c = 1;
+            for (int i = 0; i < l; i++) {
+                if (sellvalue.charAt(i) >= '0' && sellvalue.charAt(i) <= '9') {
+                    ctr3++;
+                } else {
+                    c = 0;
+                }
+            }
+            int ans3 = ctr3 * c;
         String PartFor = partFor.getValue();
         String company = Company.getValue();
         String inventoryDate = InventoryDate.getValue().toString();
@@ -262,7 +284,7 @@ String stockImage;
 
 //        Random rand= new Random();
 //        UPC.setText(myString);
-        if (ans != 0) {
+        if (ans1 != 0 && ans2!=0 && ans3!=0) {
             try {
 
                 Stage stage = (Stage) myAnchorPane.getScene().getWindow();
@@ -275,7 +297,7 @@ String stockImage;
 
                 alert.getDialogPane().setContentText("Do you want to confirm?");
 
-                alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
+                alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if (result.get() == ButtonType.OK) {
@@ -310,12 +332,41 @@ String stockImage;
                 // TODO: handle exception
             }
         }
-        else {
-                Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
-                Quantity.setText("*Enter digits from 0 to 9");
+        else if  (ans1==0) {
+            Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            Quantity.setText("*Enter digits from 0 to 9");
+            if ((ans2 == 0) && (ans3 == 0)) {
+                LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                LandingValue.setText("*Enter digits from 0 to 9");
+                SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                SellValue.setText("*Enter digits from 0 to 9");
+            } else if (ans2 == 0) {
+                LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                LandingValue.setText("*Enter digits from 0 to 9");
+            } else if (ans3 == 0) {
+                SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                SellValue.setText("*Enter digits from 0 to 9");
+            } else{
+                ;
             }
         }
-    }
+        else if(ans2==0) {
+            LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            LandingValue.setText("*Enter digits from 0 to 9");
+            if (ans3 == 0) {
+                SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                SellValue.setText("*Enter digits from 0 to 9");
+            }
+            else{;}
+        }
+        else if(ans3==0) {
+            SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            SellValue.setText("*Enter digits from 0 to 9");
+        }
+            }
+
+        }
+
     public void AddSystem(ActionEvent actionEvent) {
         boolean flag = false;
         if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null || SourceOfPurchase.getText().length() == 0 || LandingValue.getText().length() == 0 || SellValue.getText().length() == 0 || prefix.getValue() == null) {
@@ -347,7 +398,7 @@ String stockImage;
                     b = 0;
                 }
             }
-            int ans = ctr * b;
+            int ans1 = ctr * b;
 
 //        String Partnumber = PartNumber.getText();
 //        String RefPartNumber = ReferencePartNumber.getText();
@@ -355,7 +406,29 @@ String stockImage;
             String addon = AddOn.getText();
             String Sourceofpurchase = SourceOfPurchase.getText();
             String landingValue = LandingValue.getText();
-            String sellvalue = SellValue.getText();
+            int l2 = landingValue.length();
+            int ctr2 = 1;
+            int a = 1;
+            for (int i = 0; i < l; i++) {
+                if (landingValue.charAt(i) >= '0' && landingValue.charAt(i) <= '9') {
+                    ctr2++;
+                } else {
+                    a = 0;
+                }
+            }
+            int ans2 = ctr2 * a;
+            String sellvalue= SellValue.getText();
+            int l3 = sellvalue.length();
+            int ctr3 = 1;
+            int c = 1;
+            for (int i = 0; i < l; i++) {
+                if (sellvalue.charAt(i) >= '0' && sellvalue.charAt(i) <= '9') {
+                    ctr3++;
+                } else {
+                    c = 0;
+                }
+            }
+            int ans3 = ctr3 * c;
             String PartFor = partFor.getValue();
             String company = Company.getValue();
             String inventoryDate = InventoryDate.getValue().toString();
@@ -371,7 +444,7 @@ String stockImage;
 
 //        Random rand= new Random();
 //        UPC.setText(myString);
-            if (ans != 0) {
+            if ((ans1 != 0) && (ans2!=0) && (ans3!=0)) {
                 try {
 
                     Stage stage = (Stage) myAnchorPane.getScene().getWindow();
@@ -384,7 +457,7 @@ String stockImage;
 
                     alert.getDialogPane().setContentText("Do you want to confirm?");
 
-                    alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
+                    alert.getDialogPane().setHeaderText("You have given the correct information about the products. ");
                     Optional<ButtonType> result = alert.showAndWait();
 
                     if (result.get() == ButtonType.OK) {
@@ -418,17 +491,43 @@ String stockImage;
                 } catch (Exception e) {
                     // TODO: handle exception
                 }
-            } else {
-                // Quantity.setVisible(true);
+            } else if  (ans1==0) {
                 Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
                 Quantity.setText("*Enter digits from 0 to 9");
+                if ((ans2 == 0) && (ans3 == 0)) {
+                    LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    LandingValue.setText("*Enter digits from 0 to 9");
+                    SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    SellValue.setText("*Enter digits from 0 to 9");
+                } else if (ans2 == 0) {
+                    LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    LandingValue.setText("*Enter digits from 0 to 9");
+                } else if (ans3 == 0) {
+                    SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    SellValue.setText("*Enter digits from 0 to 9");
+                } else{
+                    ;
+                }
+            }
+            else if(ans2==0) {
+                LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                LandingValue.setText("*Enter digits from 0 to 9");
+                if (ans3 == 0) {
+                    SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    SellValue.setText("*Enter digits from 0 to 9");
+                }
+                else{;}
+            }
+            else if(ans3==0) {
+                SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                SellValue.setText("*Enter digits from 0 to 9");
             }
         }
     }
 
     public void AddMisc(ActionEvent actionEvent) {
         boolean flag = false;
-        if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null ) {
+        if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null || LandingValue.getText().length()==0 || SellValue.getText().length()==0 ) {
             flag = true;
             Stage stage = (Stage) myAnchorPane.getScene().getWindow();
 
@@ -457,7 +556,7 @@ String stockImage;
                     b = 0;
                 }
             }
-            int ans = ctr * b;
+            int ans1 = ctr * b;
 
 //        String Partnumber = "fhghjk5657";
         String RefPartNumber = "";
@@ -465,7 +564,29 @@ String stockImage;
         String addon = "";
         String Sourceofpurchase = SourceOfPurchase.getText();
         String landingValue= LandingValue.getText();
-        String sellvalue= SellValue.getText();
+            int l2 = landingValue.length();
+            int ctr2 = 1;
+            int a = 1;
+            for (int i = 0; i < l; i++) {
+                if (landingValue.charAt(i) >= '0' && landingValue.charAt(i) <= '9') {
+                    ctr2++;
+                } else {
+                    a = 0;
+                }
+            }
+            int ans2 = ctr2 * a;
+            String sellvalue= SellValue.getText();
+            int l3 = sellvalue.length();
+            int ctr3 = 1;
+            int c = 1;
+            for (int i = 0; i < l; i++) {
+                if (sellvalue.charAt(i) >= '0' && sellvalue.charAt(i) <= '9') {
+                    ctr3++;
+                } else {
+                    c = 0;
+                }
+            }
+            int ans3 = ctr3 * c;
         String PartFor = "";
         String company = "";
         String inventoryDate = InventoryDate.getValue().toString();
@@ -478,7 +599,7 @@ String stockImage;
 //        Random rand= new Random();
 //        UPC.setText(myString);
 
-            if(ans!=0) {
+            if((ans1!=0) && (ans2!=0) && (ans3!=0)) {
 
         try {
 
@@ -492,7 +613,7 @@ String stockImage;
 
             alert.getDialogPane().setContentText("Do you want to confirm?");
 
-            alert.getDialogPane().setHeaderText("You have given the correct information about the products.\nUnique Product Code Generated is ");
+            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == ButtonType.OK) {
@@ -526,10 +647,36 @@ String stockImage;
         } catch (Exception e) {
             // TODO: handle exception
         }
-    } else {
-                // Quantity.setVisible(true);
+    } else if  (ans1==0) {
                 Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
                 Quantity.setText("*Enter digits from 0 to 9");
+                if ((ans2 == 0) && (ans3 == 0)) {
+                    LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    LandingValue.setText("*Enter digits from 0 to 9");
+                    SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    SellValue.setText("*Enter digits from 0 to 9");
+                } else if (ans2 == 0) {
+                    LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    LandingValue.setText("*Enter digits from 0 to 9");
+                } else if (ans3 == 0) {
+                    SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    SellValue.setText("*Enter digits from 0 to 9");
+                } else{
+                    ;
+                }
+            }
+            else if(ans2==0) {
+                LandingValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                LandingValue.setText("*Enter digits from 0 to 9");
+                if (ans3 == 0) {
+                    SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                    SellValue.setText("*Enter digits from 0 to 9");
+                }
+                else{;}
+            }
+            else if(ans3==0) {
+                SellValue.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+                SellValue.setText("*Enter digits from 0 to 9");
             }
         }
     }
@@ -717,4 +864,11 @@ String stockImage;
         stage.show();
     }
 
+    public void goadminSearch(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminSearch.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

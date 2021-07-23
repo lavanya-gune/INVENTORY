@@ -40,9 +40,9 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="PartNumber" alignment="CENTER" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="PartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="156.0" layoutY="8.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
@@ -88,14 +88,14 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                     <children>
-                        <Text layoutX="26.0" layoutY="41.0" strokeType="OUTSIDE" text="SOURCE OF PURCHASE" textAlignment="CENTER">
+                        <Text layoutX="26.0" layoutY="50.0" strokeType="OUTSIDE" text="SOURCE OF PURCHASE" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
                         <TextArea fx:id="SourceOfPurchase" layoutX="415.0" layoutY="6.0" minHeight="30.0" prefHeight="64.0" prefWidth="300.0" promptText="Enter your details">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </TextArea>
                     </children>
@@ -104,7 +104,7 @@
                     <children>
                         <Button fx:id="choose" layoutX="415.0" layoutY="10.0" mnemonicParsing="false" onAction="#singleFileChooser" prefWidth="300.0" text="Choose File">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></Button>
                         <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="STOCK LOCATION" textAlignment="CENTER">
                             <font>
@@ -120,9 +120,9 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="Quantity" alignment="CENTER" layoutX="416.0" layoutY="6.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="Quantity" layoutX="416.0" layoutY="6.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="124.0" layoutY="9.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
@@ -138,36 +138,36 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="ReferencePartNumber" alignment="CENTER" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="ReferencePartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <children>
-                        <Text layoutX="26.0" layoutY="48.0" strokeType="OUTSIDE" text="ADD-ON" textAlignment="CENTER">
+                        <Text layoutX="26.0" layoutY="55.0" strokeType="OUTSIDE" text="ADD-ON" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
                         <TextArea fx:id="AddOn" layoutX="415.0" layoutY="10.0" minHeight="30.0" prefHeight="73.0" prefWidth="300.0" promptText="Enter your details">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </TextArea>
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
                     <children>
-                        <Text layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" text="LANDING PURCHASE VALUE" textAlignment="CENTER">
+                        <Text layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" text="LANDING PURCHASE VALUE" textAlignment="CENTER">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="LandingValue" alignment="CENTER" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="LandingValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="278.0" layoutY="4.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
@@ -183,9 +183,9 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="SellValue" alignment="CENTER" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="SellValue" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font></TextField>
                         <Label layoutX="138.0" layoutY="9.0" prefHeight="17.0" prefWidth="17.0" text="*" textFill="RED">
                             <font>
