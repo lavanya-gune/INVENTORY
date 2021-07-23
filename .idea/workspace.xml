@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/adminDeleteTableController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DELETE_PUBLIC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DELETE_PUBLIC.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Delete_Existing.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DELETE_PUBLIC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DELETE_PUBLIC.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/DeleteTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

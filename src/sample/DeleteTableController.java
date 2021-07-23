@@ -22,16 +22,15 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class DeleteTableController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
     private String connectQuery;
-
+    String landing_pv;
+    String sell_v;
     @FXML
     AnchorPane myAnchorPane;
     @FXML
@@ -231,30 +230,28 @@ public class DeleteTableController implements Initializable {
 //    }
 
     public void DeleteLog(ActionEvent actionEvent) throws IOException {
+
         ObservableList<modelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
         String selectedProdID = selectedItems.get(0).getP_partNumber();
-        String connectQuery = "INSERT INTO `deletelog`.`outward_item` (\n" +
-                "`part_no`,\n" +
-                "`ref_part_no`,\n" +
-                "`add_on`,\n" +
-                "`quantity`,\n" +
-                "`part_for`,\n" +
-                "`company`,\n" +
-                "`inventory_date`,\n" +
-                "`source_of_p`,\n" +
-                "`stock_loc`,\n" +
-                "`tech_details`,\n" +
-                "`setof`,\n" +
-                "`prefix`,\n" +
-                "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
 
 //        String connectQuery1 = String.format("DELETE FROM `inventory_management`.`inward_item` WHERE part_no = '%s'", selectedProdID);
-        String selectedquantity=selectedQuantity.getText();
-        int newCount=selectedItems.get(0).getP_quantity()-Integer.parseInt(selectedquantity);
+        String selectedquantity = selectedQuantity.getText();
+        int newCount = selectedItems.get(0).getP_quantity() - Integer.parseInt(selectedquantity);
+        ResultSet queryOutput;
 
-
-
-
+        try {
+            DatabaseConnectionDelete connectNow = new DatabaseConnectionDelete();
+            Connection connectDB = connectNow.getConnection();
+            String connectQuery0 = String.format("SELECT landing_pv,sell_v FROM `inventory_management`.`inward_item` WHERE part_no='%s'", selectedItems.get(0).getP_partNumber());
+//            String connectQuery1 = String.format("SELECT sell_v FROM `inventory_management`.`inward_item` WHERE part_no='%s'", selectedItems.get(0).getP_partNumber());
+            Statement statement = connectDB.createStatement();
+            queryOutput = statement.executeQuery(connectQuery0);
+            while (queryOutput.next()){
+                landing_pv = queryOutput.getString(1);
+                sell_v = queryOutput.getString(2);}
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
         String connectQuery3 = "INSERT INTO `deletelog`.`outward_item` (\n" +
                 "`part_no`,\n" +
@@ -264,12 +261,14 @@ public class DeleteTableController implements Initializable {
                 "`part_for`,\n" +
                 "`company`,\n" +
                 "`inventory_date`,\n" +
+                "`source_of_p`,\n" +
+                "`landing_pv`,\n" +
                 "`sell_v`,\n" +
                 "`stock_loc`,\n" +
                 "`tech_details`,\n" +
                 "`setof`,\n" +
                 "`prefix`,\n" +
-                "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedquantity+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
+                "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedquantity+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+landing_pv+"','"+sell_v+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
 
 //         String connectQuery2 = String.format("UPDATE `deletelog`.`outward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM deletelog.outward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedquantity,selectedProdID);
 
@@ -281,11 +280,9 @@ public class DeleteTableController implements Initializable {
             Connection connectDB = connectNow.getConnection();
 
             Statement statement = connectDB.createStatement();
-//            statement.executeUpdate(connectQuery);
+//            statement.executeUpdate(connectQuery1);
 //            statement.executeUpdate(connectQuery2);
             statement.executeUpdate(connectQuery3);
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
