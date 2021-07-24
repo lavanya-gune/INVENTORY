@@ -296,7 +296,7 @@ public class DeleteLogController implements Initializable {
                 alert.getDialogPane().setHeaderText("The selected item's quantity count is less than 0. Would you like to add similar new items? ");
                 result = alert.showAndWait();
                 if (result.get() == ButtonType.OK) {
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormPart.fxml")));
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddNewItem.fxml")));
                     stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -320,7 +320,6 @@ public class DeleteLogController implements Initializable {
                 e.printStackTrace();
             }
             observableList.removeAll(selectedItems);
-
 //            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
 //            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 //            scene = new Scene(root);

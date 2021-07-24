@@ -15,7 +15,7 @@
                 <Font name="System Bold" size="21.0" />
             </font>
         </Button>
-        <TableView fx:id="tableView" layoutX="16.0" layoutY="99.0" prefHeight="545.0" prefWidth="1259.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+        <TableView fx:id="tableView" layoutX="16.0" layoutY="99.0" prefHeight="545.0" prefWidth="1259.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="89.39999999999998">
             <columns>
                 <TableColumn fx:id="col_partNo" minWidth="0.0" prefWidth="153.33335876464844" text="PART NUMBER" />
                 <TableColumn fx:id="col_refPartNo" minWidth="0.0" prefWidth="153.33335876464844" text="REFERENCE PART NUMBER" />
