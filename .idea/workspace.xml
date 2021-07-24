@@ -3,9 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteLogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnectionNext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseConnectionNext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteLogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/DeleteTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/addExistingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/addExistingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminDeleteTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminDeleteTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminModelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminModelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminSearch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminSearch.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminSearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminSearchTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/deleteLog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/deleteLog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/modelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/modelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/monthly log.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/monthly log.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/monthlyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/monthlyLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/third.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

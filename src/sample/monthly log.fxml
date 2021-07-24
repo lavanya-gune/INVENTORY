@@ -10,7 +10,7 @@
 
 <AnchorPane minHeight="650.0" minWidth="1290.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #C4FCF0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.monthlyLog">
     <children>
-        <Button fx:id="back" layoutX="-9.0" layoutY="-3.0" mnemonicParsing="false" onAction="#goDelete" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
+        <Button fx:id="back" layoutX="-9.0" layoutY="-3.0" mnemonicParsing="false" onAction="#goThird" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
@@ -51,5 +51,10 @@
             </font>
         </Label>
         <DatePicker fx:id="enddatelog" layoutX="862.0" layoutY="57.0" />
+      <Button fx:id="HOME" layoutX="1160.0" layoutY="9.0" mnemonicParsing="false" onAction="#goSample" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #C4FCF0;" text="HOME" textAlignment="JUSTIFY" textFill="#005575">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

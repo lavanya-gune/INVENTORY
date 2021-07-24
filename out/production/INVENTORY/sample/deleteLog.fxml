@@ -34,7 +34,7 @@
                 <TableColumn fx:id="col_comment" minWidth="5.3333740234375" prefWidth="182.66665649414062" text="COMMENT" />
             </columns>
         </TableView>
-        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="545.0" layoutY="31.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#DeleteLogDetails" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #005575;" text="ENTER" textAlignment="CENTER" textFill="WHITE">
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="545.0" layoutY="31.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#monthlyLog" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #005575;" text="ENTER" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Arial Black" size="19.0" />
             </font>
