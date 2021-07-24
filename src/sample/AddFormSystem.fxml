@@ -140,7 +140,7 @@
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="ReferencePartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0" promptText="REQUIRED">
+                        <TextField fx:id="ReferencePartNumber" layoutX="415.0" layoutY="10.0" prefHeight="25.0" prefWidth="300.0">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font></TextField>

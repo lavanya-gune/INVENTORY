@@ -225,7 +225,6 @@ String stockImage;
         }
 
         else if  (!flag) {
-
             String quantity = Quantity.getText();
             int l = quantity.length();
             int ctr = 1;
@@ -249,7 +248,7 @@ String stockImage;
         int l2 = landingValue.length();
             int ctr2 = 1;
             int a = 1;
-            for (int i = 0; i < l; i++) {
+            for (int i = 0; i < l2; i++) {
                 if (landingValue.charAt(i) >= '0' && landingValue.charAt(i) <= '9') {
                     ctr2++;
                 } else {
@@ -261,7 +260,7 @@ String stockImage;
             int l3 = sellvalue.length();
             int ctr3 = 1;
             int c = 1;
-            for (int i = 0; i < l; i++) {
+            for (int i = 0; i < l3; i++) {
                 if (sellvalue.charAt(i) >= '0' && sellvalue.charAt(i) <= '9') {
                     ctr3++;
                 } else {
@@ -409,7 +408,7 @@ String stockImage;
             int l2 = landingValue.length();
             int ctr2 = 1;
             int a = 1;
-            for (int i = 0; i < l; i++) {
+            for (int i = 0; i < l2; i++) {
                 if (landingValue.charAt(i) >= '0' && landingValue.charAt(i) <= '9') {
                     ctr2++;
                 } else {
@@ -421,7 +420,7 @@ String stockImage;
             int l3 = sellvalue.length();
             int ctr3 = 1;
             int c = 1;
-            for (int i = 0; i < l; i++) {
+            for (int i = 0; i < l2; i++) {
                 if (sellvalue.charAt(i) >= '0' && sellvalue.charAt(i) <= '9') {
                     ctr3++;
                 } else {
@@ -557,7 +556,6 @@ String stockImage;
                 }
             }
             int ans1 = ctr * b;
-
 //        String Partnumber = "fhghjk5657";
         String RefPartNumber = "";
 //        String quantity = Quantity.getText();
@@ -567,7 +565,7 @@ String stockImage;
             int l2 = landingValue.length();
             int ctr2 = 1;
             int a = 1;
-            for (int i = 0; i < l; i++) {
+            for (int i = 0; i < l2; i++) {
                 if (landingValue.charAt(i) >= '0' && landingValue.charAt(i) <= '9') {
                     ctr2++;
                 } else {
@@ -579,7 +577,7 @@ String stockImage;
             int l3 = sellvalue.length();
             int ctr3 = 1;
             int c = 1;
-            for (int i = 0; i < l; i++) {
+            for (int i = 0; i < l3; i++) {
                 if (sellvalue.charAt(i) >= '0' && sellvalue.charAt(i) <= '9') {
                     ctr3++;
                 } else {
