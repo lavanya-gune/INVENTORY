@@ -207,7 +207,7 @@ String stockImage;
 //        Random rand= new Random();
 //
 //        UPC.setText(myString);
-        if (PartNumber.getText().length()==0 || Quantity.getText().length()==0 || InventoryDate.getValue()==null || SourceOfPurchase.getText().length()==0 || LandingValue.getText().length()==0 || SellValue.getText().length()==0 ) {
+        if (PartNumber.getText().length()==0 || Quantity.getText().length()==0 || InventoryDate.getValue()==null || LandingValue.getText().length()==0 || SellValue.getText().length()==0 ) {
             flag=true;
 
             Stage stage = (Stage) myAnchorPane.getScene().getWindow();
@@ -369,7 +369,7 @@ String stockImage;
 
     public void AddSystem(ActionEvent actionEvent) {
         boolean flag = false;
-        if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null || SourceOfPurchase.getText().length() == 0 || LandingValue.getText().length() == 0 || SellValue.getText().length() == 0 || prefix.getValue() == null) {
+        if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null || LandingValue.getText().length() == 0 || LandingValue.getText().length()==0 || SellValue.getText().length() == 0 || prefix.getValue() == null) {
             flag = true;
             Stage stage = (Stage) myAnchorPane.getScene().getWindow();
 

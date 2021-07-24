@@ -56,8 +56,6 @@ public class monthlyLog  implements Initializable {
     @FXML
     public TableColumn<adminModelTable,String> col_stockLocation=new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable,String> col_techDetails=new TableColumn<>();
-    @FXML
     public TableColumn<adminModelTable,String> col_setOf=new TableColumn<>();
     @FXML
     public TableColumn<adminModelTable,String> col_prefix=new TableColumn<>();
@@ -81,7 +79,6 @@ public class monthlyLog  implements Initializable {
         col_landingPurchaseValue.setCellValueFactory(new PropertyValueFactory<>("P_landingPurchaseValue"));
         col_sellingValue.setCellValueFactory(new PropertyValueFactory<>("P_sellingValue"));
         col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
-        col_techDetails.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
         col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
         col_prefix.setCellValueFactory(new PropertyValueFactory<>("P_prefix"));
         col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
@@ -108,7 +105,6 @@ public class monthlyLog  implements Initializable {
                         queryOutput.getInt("landing_pv"),
                         queryOutput.getInt("sell_v"),
                         queryOutput.getString("stock_loc"),
-                        queryOutput.getString("tech_details"),
                         queryOutput.getString("setof"),
                         queryOutput.getString("prefix"),
                         queryOutput.getString("comment")));
@@ -144,7 +140,6 @@ public class monthlyLog  implements Initializable {
                             queryOutput.getInt("landing_pv"),
                             queryOutput.getInt("sell_v"),
                             queryOutput.getString("stock_loc"),
-                            queryOutput.getString("tech_details"),
                             queryOutput.getString("setof"),
                             queryOutput.getString("prefix"),
                             queryOutput.getString("comment")));

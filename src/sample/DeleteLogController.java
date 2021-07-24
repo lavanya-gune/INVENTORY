@@ -67,8 +67,6 @@ public class DeleteLogController implements Initializable {
     @FXML
     public TableColumn<adminModelTable, String> col_stockLocation = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_techDetails = new TableColumn<>();
-    @FXML
     public TableColumn<adminModelTable, String> col_setOf = new TableColumn<>();
     @FXML
     public TableColumn<adminModelTable, String> col_prefix = new TableColumn<>();
@@ -109,7 +107,6 @@ public class DeleteLogController implements Initializable {
                         queryOutput.getInt("landing_pv"),
                         queryOutput.getInt("sell_v"),
                         queryOutput.getString("stock_loc"),
-                        queryOutput.getString("tech_details"),
                         queryOutput.getString("setof"),
                         queryOutput.getString("prefix"),
                         queryOutput.getString("comment")));
@@ -126,7 +123,6 @@ public class DeleteLogController implements Initializable {
             col_landingPurchaseValue.setCellValueFactory(new PropertyValueFactory<>("P_landingPurchaseValue"));
             col_sellingValue.setCellValueFactory(new PropertyValueFactory<>("P_sellingValue"));
             col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
-            col_techDetails.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
             col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
             col_prefix.setCellValueFactory(new PropertyValueFactory<>("P_prefix"));
             col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
@@ -274,10 +270,9 @@ public class DeleteLogController implements Initializable {
                     "`landing_pv`,\n" +
                     "`sell_v`,\n" +
                     "`stock_loc`,\n" +
-                    "`tech_details`,\n" +
                     "`setof`,\n" +
                     "`prefix`,\n" +
-                    "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_landingPurchaseValue()+"','"+selectedItems.get(0).getP_sellingValue()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_techDetails()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
+                    "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_landingPurchaseValue()+"','"+selectedItems.get(0).getP_sellingValue()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
 
             connectQuery1 = flag ? String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = 0 WHERE `part_no` = '%s';",selectedProdID) :  String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedItems.get(0).getP_quantity(),selectedProdID);
             String connectQuery3 = String.format("DELETE FROM `deletelog`.`outward_item` WHERE part_no = '%s'", selectedProdID);
@@ -326,7 +321,6 @@ public class DeleteLogController implements Initializable {
 //            stage.setScene(scene);
 //            stage.show();
         }
-
     }
 
     public void retrieveSearchedItems(ActionEvent actionEvent) {
@@ -366,7 +360,6 @@ public class DeleteLogController implements Initializable {
                         queryOutput.getInt("landing_pv"),
                         queryOutput.getInt("sell_v"),
                         queryOutput.getString("stock_loc"),
-                        queryOutput.getString("tech_details"),
                         queryOutput.getString("setof"),
                         queryOutput.getString("prefix"),
                         queryOutput.getString("comment")));

@@ -39,40 +39,42 @@ public class DeleteExistingProductController implements Initializable {
     @FXML
     public TextField filterBox;
     @FXML
-    public TableView<modelTable> tableView = new TableView<>();
+    public TableView<adminModelTable> tableView = new TableView<>();
     @FXML
-    public TableColumn<modelTable, String> col_partNo = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_partNo = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_refPartNo = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_refPartNo = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_addOn = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_addOn = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, Integer> col_quantity = new TableColumn<>();
+    public TableColumn<adminModelTable, Integer> col_quantity = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_partFor = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_partFor = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_company = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_company = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_inventoryDate = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_inventoryDate = new TableColumn<>();
     @FXML
     public TableColumn<adminModelTable, String> col_sourceOfPurchase = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_stockLocation = new TableColumn<>();
+    public TableColumn<adminModelTable,Integer> col_landingPurchaseValue=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_techDetails = new TableColumn<>();
+    public TableColumn<adminModelTable,Integer> col_sellingValue=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_setOf = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_stockLocation = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_prefix = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_setOf = new TableColumn<>();
     @FXML
-    public TableColumn<modelTable, String> col_comment = new TableColumn<>();
+    public TableColumn<adminModelTable, String> col_prefix = new TableColumn<>();
+    @FXML
+    public TableColumn<adminModelTable, String> col_comment = new TableColumn<>();
 
 
     @FXML
     private TextField enteredProdCode;
 
 
-    ObservableList<modelTable> observableList = FXCollections.observableArrayList();
+    ObservableList<adminModelTable> observableList = FXCollections.observableArrayList();
 
 
     @Override
@@ -89,7 +91,7 @@ public class DeleteExistingProductController implements Initializable {
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
             while (queryOutput.next()) {
-                observableList.add(new modelTable(
+                observableList.add(new adminModelTable(
                         queryOutput.getString("part_no"),
                         queryOutput.getString("ref_part_no"),
                         queryOutput.getString("add_on"),
@@ -98,8 +100,9 @@ public class DeleteExistingProductController implements Initializable {
                         queryOutput.getString("company"),
                         queryOutput.getString("inventory_date"),
                         queryOutput.getString("source_of_p"),
+                        queryOutput.getInt("landing_pv"),
+                        queryOutput.getInt("sell_v"),
                         queryOutput.getString("stock_loc"),
-                        queryOutput.getString("tech_details"),
                         queryOutput.getString("setof"),
                         queryOutput.getString("prefix"),
                         queryOutput.getString("comment")));
@@ -113,41 +116,42 @@ public class DeleteExistingProductController implements Initializable {
             col_company.setCellValueFactory(new PropertyValueFactory<>("P_company"));
             col_inventoryDate.setCellValueFactory(new PropertyValueFactory<>("P_invDate"));
             col_sourceOfPurchase.setCellValueFactory(new PropertyValueFactory<>("P_sourceOfPurchase"));
+            col_landingPurchaseValue.setCellValueFactory(new PropertyValueFactory<>("P_landingPurchaseValue"));
+            col_sellingValue.setCellValueFactory(new PropertyValueFactory<>("P_sellingValue"));
             col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
-            col_techDetails.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
             col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
             col_prefix.setCellValueFactory(new PropertyValueFactory<>("P_prefix"));
             col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
             tableView.setItems(observableList);
 
-            FilteredList<modelTable> filteredData = new FilteredList<>(observableList, b -> true);
+            FilteredList<adminModelTable> filteredData = new FilteredList<>(observableList, b -> true);
             filterBox.textProperty().addListener((observableValue, s, t1) -> {
-                filteredData.setPredicate(modelTable -> {
+                filteredData.setPredicate(adminModelTable -> {
                     if (t1 == null || t1.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = t1.toLowerCase();
 
-                    if (modelTable.getP_partNumber().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    if (adminModelTable.getP_partNumber().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                         return true;
                     }
-                    if (String.valueOf(modelTable.getP_refPartNumber()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    if (String.valueOf(adminModelTable.getP_refPartNumber()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                         return true;
                     }
-                    if (String.valueOf(modelTable.getP_quantity()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    if (String.valueOf(adminModelTable.getP_quantity()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                         return true;
                     }
-                    if (modelTable.getP_invDate().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    if (adminModelTable.getP_invDate().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                         return true;
                     }
-                    if (modelTable.getP_partFor().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    if (adminModelTable.getP_partFor().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                         return true;
                     } else
                         return false;
                 });
             });
 
-            SortedList<modelTable> sortedData = new SortedList<>(filteredData);
+            SortedList<adminModelTable> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(tableView.comparatorProperty());
             tableView.setItems(sortedData);
 
@@ -177,7 +181,7 @@ public class DeleteExistingProductController implements Initializable {
 //            ResultSet queryOutput = statement.executeQuery(connectQuery);
 //
 //            while (queryOutput.next()) {
-//                observableList.add(new modelTable(
+//                observableList.add(new adminModelTable(
 //                        queryOutput.getInt("prod_code"),
 //                        queryOutput.getString("mfd"),
 //                        queryOutput.getString("last_date"),
@@ -192,7 +196,7 @@ public class DeleteExistingProductController implements Initializable {
 
 
 //    public void showRowDetails(ActionEvent event) {
-//        ObservableList<modelTable> productList;
+//        ObservableList<adminModelTable> productList;
 //        productList = tableView.getSelectionModel().getSelectedItems();
 //        Integer selectedProdID = productList.get(0).getPid();
 //
@@ -231,7 +235,7 @@ public class DeleteExistingProductController implements Initializable {
 //    }
 
 //    public void DeleteLog(ActionEvent actionEvent) throws IOException {
-//        ObservableList<modelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
+//        ObservableList<adminModelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
 //        String selectedProdID = selectedItems.get(0).getP_partNumber();
 //        String connectQuery = "INSERT INTO `deletelog`.`outward_item` (\n" +
 //                "`part_no`,\n" +
@@ -341,7 +345,7 @@ public class DeleteExistingProductController implements Initializable {
         alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            ObservableList<modelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
+            ObservableList<adminModelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
             String selectedProdID = selectedItems.get(0).getP_partNumber();
             String connectQuery = String.format("DELETE FROM `inventory_management`.`inward_item` WHERE part_no = '%s'", selectedProdID);
             try {

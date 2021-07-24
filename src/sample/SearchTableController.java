@@ -54,8 +54,6 @@ public class SearchTableController implements Initializable {
     @FXML
     public TableColumn<modelTable,String> col_stockLocation=new TableColumn<>();
     @FXML
-    public TableColumn<modelTable,String> col_techDetails=new TableColumn<>();
-    @FXML
     public TableColumn<modelTable,String> col_setOf=new TableColumn<>();
     @FXML
     public TableColumn<modelTable,String> col_prefix=new TableColumn<>();
@@ -91,7 +89,6 @@ public class SearchTableController implements Initializable {
                         queryOutput.getString("inventory_date"),
                         queryOutput.getString("source_of_p"),
                         queryOutput.getString("stock_loc"),
-                        queryOutput.getString("tech_details"),
                         queryOutput.getString("setof"),
                         queryOutput.getString("prefix"),
                         queryOutput.getString("comment")));
@@ -106,7 +103,6 @@ public class SearchTableController implements Initializable {
             col_inventoryDate.setCellValueFactory(new PropertyValueFactory<>("P_invDate"));
             col_sourceOfPurchase.setCellValueFactory(new PropertyValueFactory<>("P_sourceOfPurchase"));
             col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
-            col_techDetails.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
             col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
             col_prefix.setCellValueFactory(new PropertyValueFactory<>("P_prefix"));
             col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));

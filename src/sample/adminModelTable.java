@@ -28,8 +28,6 @@ public class adminModelTable {
     @FXML
     private SimpleStringProperty P_stockLocation;
     @FXML
-    private SimpleStringProperty P_techDetails;
-    @FXML
     private SimpleStringProperty P_setOf;
     @FXML
     private SimpleStringProperty P_prefix;
@@ -114,12 +112,6 @@ public class adminModelTable {
     }
     public void setP_stockLocation(String p_stockLocation) { P_stockLocation = new SimpleStringProperty(p_stockLocation); }
 
-    public String getP_techDetails() { return P_techDetails.get(); }
-    public SimpleStringProperty p_techDetails() {
-        return P_techDetails;
-    }
-    public void setP_techDetails(String p_techDetails) { P_techDetails = new SimpleStringProperty(p_techDetails); }
-
     public String getP_setOf() { return P_setOf.get(); }
     public SimpleStringProperty p_setOf() {
         return P_setOf;
@@ -140,7 +132,7 @@ public class adminModelTable {
 
 
     public adminModelTable(String p_partNumber, String p_refPartNumber, String p_addOn, int p_quantity, String p_partFor, String p_company, String p_invDate,
-                           String p_sourceOfPurchase, int p_landingPurchaseValue, int p_sellingValue, String p_stockLocation, String p_techDetails, String p_setOf, String p_prefix, String p_comment) {
+                           String p_sourceOfPurchase, int p_landingPurchaseValue, int p_sellingValue, String p_stockLocation, String p_setOf, String p_prefix, String p_comment) {
         this.P_partNumber = new SimpleStringProperty(p_partNumber);
         this.P_refPartNumber = new SimpleStringProperty(p_refPartNumber);
         this.P_addOn = new SimpleStringProperty(p_addOn);
@@ -152,7 +144,6 @@ public class adminModelTable {
         this.P_landingPurchaseValue = new SimpleIntegerProperty(p_landingPurchaseValue);
         this.P_sellingValue = new SimpleIntegerProperty(p_sellingValue);
         this.P_stockLocation = new SimpleStringProperty(p_stockLocation);
-        this.P_techDetails = new SimpleStringProperty(p_techDetails);
         this.P_setOf = new SimpleStringProperty(p_setOf);
         this.P_prefix = new SimpleStringProperty(p_prefix);
         this.P_comment = new SimpleStringProperty(p_comment);
