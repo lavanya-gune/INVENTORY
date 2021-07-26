@@ -43,42 +43,46 @@ public class DeleteLogController implements Initializable {
     @FXML
     public TextField filterBox=new TextField();
     @FXML
-    public TableView<adminModelTable> tableView = new TableView<>();
+    public TableView<deleteLogModelTable> tableView = new TableView<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_partNo = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_partNo = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_refPartNo = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_refPartNo = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_addOn = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_addOn = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, Integer> col_quantity = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, Integer> col_quantity = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_partFor = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, Integer> col_quantityUsed = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_company = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_partFor = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_inventoryDate = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_company = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_sourceOfPurchase = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_inventoryDate = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, Integer> col_landingPurchaseValue = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_date_time = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, Integer> col_sellingValue = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_sourceOfPurchase = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_stockLocation = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, Integer> col_landingPurchaseValue = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_setOf = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, Integer> col_sellingValue = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_prefix = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_stockLocation = new TableColumn<>();
     @FXML
-    public TableColumn<adminModelTable, String> col_comment = new TableColumn<>();
+    public TableColumn<deleteLogModelTable, String> col_setOf = new TableColumn<>();
+    @FXML
+    public TableColumn<deleteLogModelTable, String> col_prefix = new TableColumn<>();
+    @FXML
+    public TableColumn<deleteLogModelTable, String> col_comment = new TableColumn<>();
 
 
     @FXML
     private TextField enteredProdCode;
 
 
-    ObservableList<adminModelTable> observableList = FXCollections.observableArrayList();
+    ObservableList<deleteLogModelTable> observableList = FXCollections.observableArrayList();
 
 
     @Override
@@ -95,14 +99,16 @@ public class DeleteLogController implements Initializable {
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
             while (queryOutput.next()) {
-                observableList.add(new adminModelTable(
+                observableList.add(new deleteLogModelTable(
                         queryOutput.getString("part_no"),
                         queryOutput.getString("ref_part_no"),
                         queryOutput.getString("add_on"),
                         queryOutput.getInt("quantity"),
+                        queryOutput.getInt("transaction_qt"),
                         queryOutput.getString("part_for"),
                         queryOutput.getString("company"),
                         queryOutput.getString("inventory_date"),
+                        queryOutput.getString("transaction_dt"),
                         queryOutput.getString("source_of_p"),
                         queryOutput.getInt("landing_pv"),
                         queryOutput.getInt("sell_v"),
@@ -114,21 +120,23 @@ public class DeleteLogController implements Initializable {
 
             col_partNo.setCellValueFactory(new PropertyValueFactory<>("P_partNumber"));
             col_refPartNo.setCellValueFactory(new PropertyValueFactory<>("P_refPartNumber"));
-            col_addOn.setCellValueFactory(new PropertyValueFactory<>("P_addOn"));
+            col_quantityUsed.setCellValueFactory(new PropertyValueFactory<>("P_quantityUsed"));
             col_quantity.setCellValueFactory(new PropertyValueFactory<>("P_quantity"));
             col_partFor.setCellValueFactory(new PropertyValueFactory<>("P_partFor"));
             col_company.setCellValueFactory(new PropertyValueFactory<>("P_company"));
             col_inventoryDate.setCellValueFactory(new PropertyValueFactory<>("P_invDate"));
+            col_date_time.setCellValueFactory(new PropertyValueFactory<>("P_date_time"));
             col_sourceOfPurchase.setCellValueFactory(new PropertyValueFactory<>("P_sourceOfPurchase"));
             col_landingPurchaseValue.setCellValueFactory(new PropertyValueFactory<>("P_landingPurchaseValue"));
             col_sellingValue.setCellValueFactory(new PropertyValueFactory<>("P_sellingValue"));
             col_stockLocation.setCellValueFactory(new PropertyValueFactory<>("P_stockLocation"));
+            col_addOn.setCellValueFactory(new PropertyValueFactory<>("P_addOn"));
             col_setOf.setCellValueFactory(new PropertyValueFactory<>("P_setOf"));
             col_prefix.setCellValueFactory(new PropertyValueFactory<>("P_prefix"));
             col_comment.setCellValueFactory(new PropertyValueFactory<>("P_comment"));
             tableView.setItems(observableList);
 
-//            FilteredList<adminModelTable> filteredData = new FilteredList<>(observableList, b -> true);
+//            FilteredList<deleteLogModelTable> filteredData = new FilteredList<>(observableList, b -> true);
 //            filterBox.textProperty().addListener((observableValue, s, t1) -> {
 //                filteredData.setPredicate(modelTable -> {
 //                    if (t1 == null || t1.isEmpty()) {
@@ -155,7 +163,7 @@ public class DeleteLogController implements Initializable {
 //                });
 //            });
 //
-//            SortedList<adminModelTable> sortedData = new SortedList<>(filteredData);
+//            SortedList<deleteLogModelTable> sortedData = new SortedList<>(filteredData);
 //            sortedData.comparatorProperty().bind(tableView.comparatorProperty());
 //            tableView.setItems(sortedData);
 
@@ -253,7 +261,7 @@ public class DeleteLogController implements Initializable {
         alert.getDialogPane().setHeaderText("Are you sure you want to delete selected product.");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            ObservableList<adminModelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
+            ObservableList<deleteLogModelTable> selectedItems = tableView.getSelectionModel().getSelectedItems();
             String selectedProdID = selectedItems.get(0).getP_partNumber();
             Integer selectedQuantity = selectedItems.get(0).getP_quantity();
             boolean flag = selectedQuantity < 0;
@@ -272,9 +280,13 @@ public class DeleteLogController implements Initializable {
                     "`stock_loc`,\n" +
                     "`setof`,\n" +
                     "`prefix`,\n" +
-                    "`comment`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_landingPurchaseValue()+"','"+selectedItems.get(0).getP_sellingValue()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"'"+")";
+                    "`comment`,\n" +
+                    "`transaction_dt`,\n" +
+                    "`transaction_qt`) VALUES ('"+selectedItems.get(0).getP_partNumber()+"','"+selectedItems.get(0).getP_refPartNumber()+"','"+selectedItems.get(0).getP_addOn()+"','"+selectedItems.get(0).getP_quantity()+"','"+selectedItems.get(0).getP_partFor()+"','"+selectedItems.get(0).getP_company()+"','"+selectedItems.get(0).getP_invDate()+"','"+selectedItems.get(0).getP_sourceOfPurchase()+"','"+selectedItems.get(0).getP_landingPurchaseValue()+"','"+selectedItems.get(0).getP_sellingValue()+"','"+selectedItems.get(0).getP_stockLocation()+"','"+selectedItems.get(0).getP_setOf()+"','"+selectedItems.get(0).getP_prefix()+"','"+selectedItems.get(0).getP_comment()+"','"+selectedItems.get(0).getP_date_time()+"','"+selectedItems.get(0).getP_quantityUsed()+"'"+")";
 
-            connectQuery1 = flag ? String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = 0 WHERE `part_no` = '%s';",selectedProdID) :  String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedItems.get(0).getP_quantity(),selectedProdID);
+//            connectQuery1 = flag ? String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = 0 WHERE `part_no` = '%s';",selectedProdID) :  String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = (SELECT `quantity` FROM (SELECT `quantity` FROM inventory_management.inward_item WHERE `part_no` = '%s') as lpv ) - %s WHERE `part_no` = '%s';",selectedProdID,selectedItems.get(0).getP_quantity(),selectedProdID);
+
+            connectQuery1 = flag ? String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = 0 WHERE `part_no` = '%s';",selectedProdID) :  String.format("UPDATE `inventory_management`.`inward_item` SET `quantity` = %s WHERE `part_no` = '%s';",selectedItems.get(0).getP_quantity(),selectedProdID);
             String connectQuery3 = String.format("DELETE FROM `deletelog`.`outward_item` WHERE part_no = '%s'", selectedProdID);
 
             if(flag) {
@@ -348,14 +360,16 @@ public class DeleteLogController implements Initializable {
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
             while(queryOutput.next()) {
-                observableList.add(new adminModelTable(
+                observableList.add(new deleteLogModelTable(
                         queryOutput.getString("part_no"),
                         queryOutput.getString("ref_part_no"),
                         queryOutput.getString("add_on"),
                         queryOutput.getInt("quantity"),
+                        queryOutput.getInt("transaction_qt"),
                         queryOutput.getString("part_for"),
                         queryOutput.getString("company"),
                         queryOutput.getString("inventory_date"),
+                        queryOutput.getString("transaction_dt"),
                         queryOutput.getString("source_of_p"),
                         queryOutput.getInt("landing_pv"),
                         queryOutput.getInt("sell_v"),
