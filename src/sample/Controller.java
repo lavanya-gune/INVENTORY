@@ -820,7 +820,8 @@ String stockImage;
                 "`stock_loc`,\n" +
                 "`setof`,\n" +
                 "`prefix`,\n" +
-                "`comment`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+setof+"','"+prefix+"','"+Comment+"'"+")";
+                "`comment`,\n" +
+                "`transaction_qt`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+setof+"','"+prefix+"','"+Comment+"','"+Quantity+"'"+")";
         try{
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(connectQuery1);
