@@ -3,13 +3,8 @@ package sample;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.util.Objects;
-
-public class modelTable {
+public class adminModelTable {
     @FXML
     private SimpleStringProperty P_partNumber;
     @FXML
@@ -27,6 +22,10 @@ public class modelTable {
     @FXML
     private SimpleStringProperty P_sourceOfPurchase;
     @FXML
+    private SimpleIntegerProperty P_landingPurchaseValue;
+    @FXML
+    private SimpleIntegerProperty P_sellingValue;
+    @FXML
     private SimpleStringProperty P_stockLocation;
     @FXML
     private SimpleStringProperty P_setOf;
@@ -34,18 +33,6 @@ public class modelTable {
     private SimpleStringProperty P_prefix;
     @FXML
     private SimpleStringProperty P_comment;
-
-    @FXML
-    private ImageView images;
-
-    public ImageView getImages(){
-        return this.images;
-    }
-    public void setImages(String URL){
-        Image anImage = new Image(URL);
-        this.images = new ImageView(anImage);
-    }
-
 
     public String getP_partNumber() { return P_partNumber.get(); }
     public SimpleStringProperty p_partNumberProperty() {
@@ -107,6 +94,18 @@ public class modelTable {
     }
     public void setP_sourceOfPurchase(String p_sourceOfPurchase) { P_sourceOfPurchase = new SimpleStringProperty(p_sourceOfPurchase); }
 
+    public Integer getP_landingPurchaseValue() { return P_landingPurchaseValue.get(); }
+    public SimpleIntegerProperty p_landingPurchaseValue() {
+        return P_landingPurchaseValue;
+    }
+    public void setP_landingPurchaseValue(Integer p_landingPurchaseValue) { P_landingPurchaseValue = new SimpleIntegerProperty(p_landingPurchaseValue); }
+
+    public Integer getP_sellingValue() { return P_sellingValue.get(); }
+    public SimpleIntegerProperty p_sellingValue() {
+        return P_sellingValue;
+    }
+    public void setP_sellingValue(Integer p_sellingValue) { P_sellingValue = new SimpleIntegerProperty(p_sellingValue); }
+
     public String getP_stockLocation() { return P_stockLocation.get(); }
     public SimpleStringProperty p_stockLocation() {
         return P_stockLocation;
@@ -132,20 +131,18 @@ public class modelTable {
     public void setP_comment(String p_comment) { P_comment = new SimpleStringProperty(p_comment); }
 
 
-    public modelTable(String p_partNumber, String p_refPartNumber,String URL,String p_addOn, int p_quantity, String p_partFor, String p_company, String p_invDate,
-                           String p_sourceOfPurchase, String p_stockLocation, String p_setOf, String p_prefix, String p_comment) {
+    public adminModelTable(String p_partNumber, String p_refPartNumber, String p_addOn, int p_quantity, String p_partFor, String p_company, String p_invDate,
+                           String p_sourceOfPurchase, int p_landingPurchaseValue, int p_sellingValue, String p_stockLocation, String p_setOf, String p_prefix, String p_comment) {
         this.P_partNumber = new SimpleStringProperty(p_partNumber);
         this.P_refPartNumber = new SimpleStringProperty(p_refPartNumber);
-
-        this.images = new ImageView(new Image(URL));
-        images.setFitHeight(90);
-        images.setFitWidth(150);
         this.P_addOn = new SimpleStringProperty(p_addOn);
         this.P_quantity = new SimpleIntegerProperty(p_quantity);
         this.P_partFor = new SimpleStringProperty(p_partFor);
         this.P_company = new SimpleStringProperty(p_company);
         this.P_invDate = new SimpleStringProperty(p_invDate);
         this.P_sourceOfPurchase = new SimpleStringProperty(p_sourceOfPurchase);
+        this.P_landingPurchaseValue = new SimpleIntegerProperty(p_landingPurchaseValue);
+        this.P_sellingValue = new SimpleIntegerProperty(p_sellingValue);
         this.P_stockLocation = new SimpleStringProperty(p_stockLocation);
         this.P_setOf = new SimpleStringProperty(p_setOf);
         this.P_prefix = new SimpleStringProperty(p_prefix);
