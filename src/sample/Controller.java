@@ -1,10 +1,14 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import java.sql.*;
 
 import java.io.File;
+import java.io.ObjectStreamClass;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -15,78 +19,63 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 //import org.krysalis.barcode4j.impl.code128.Code128Bean;
 //import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
+
 
 public class Controller implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    public ScrollBar VerticalScrollbar;
 
     @FXML
     Button submit;
     @FXML
     Button back;
     @FXML
-    private Button choose;
-    @FXML
-    Button HOME;
+    Button connectbutton;
     @FXML
     Label wrong;
-
-
     @FXML
-    private TextField PartNumber;
-    @FXML
-    private TextField ReferencePartNumber;
-    @FXML
-    private TextField Quantity;
-    @FXML
-    private TextArea AddOn;
-    @FXML
-    private TextField LandingValue;
-    @FXML
-    private TextField SellValue;
-    @FXML
-    private TextField setof;
-    @FXML
-    private TextArea MiscComment;
-
-
+    private TextField Productcode;
     @FXML
     PasswordField password;
-
+    @FXML
+    private ChoiceBox<String> Part_Type = new ChoiceBox<>();
     @FXML
     private ChoiceBox<String> partFor = new ChoiceBox<>();
     @FXML
     private ChoiceBox<String> Company = new ChoiceBox<>();
-    @FXML
-    private ChoiceBox<String> prefix = new ChoiceBox<>();
 
     @FXML
-    private GridPane details;
+    private DatePicker mfd;
     @FXML
-    private AnchorPane myAnchorPane;
-
+    private DatePicker lastDate;
     @FXML
-    private DatePicker InventoryDate;
-
+    private TextArea techDetails;
     @FXML
-    private TextArea SourceOfPurchase;
+    private TextArea comment;
 
-    private final String[] partfor = {"CR Injector","CR Pump","CR Rail","EUI/EUP AII","INCLINE PUMP","VE/EDC PUMP/ VP14/VPH4","Heavy/Special","China Parts","MISCELLANEOUS"};
-    private final String[] companies = {"BOSCH", "DELPHI", "DENSO","ZEXEL","CONTINENTAL VDO","REDAT","DISA","CHINA","MOTOR PAL","OTHERS", "MISCELLANEOUS"};
-    private final String[] pre={"CRI","CPP","CR","EUI","EUP","VE4","VEC","VP44","VP29"};
+
+    public String part;
+
+    private final String[] partfor = {"Injector", "Rail", "Pump", "MISCELLANEOUS"};
+    private final String[] partType = {"Full Kit", "Nozzle", "Valve", "Both Nozzle and Valve", "Solenoid"};
+    private final String[] Pump = {"ROTARY", "LINE PUMP", "CP", "VP", "MISCELLANEOUS"};
+    private final String[] Rail = {"BOSCH", "VOLVO", "DELPHI", "MISCELLANEOUS"};
+    private final String[] Injector = {"BOSCH", "DELPHI", "DENSO", "CONTI", "PEIZO", "UNIT INJECTOR", "VOLVO", "CAT", "MISCELLANEOUS"};
+    private final String[] MISC = {"BOSCH", "DELPHI", "DENSO", "CONTI", "PEIZO", "UNIT INJECTOR", "VOLVO", "CAT", "ROTARY", "LINE PUMP", "CP", "VP", "MISCELLANEOUS"};
+
+    public Controller() {
+    }
 
     public void goLogin(javafx.event.ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
@@ -116,15 +105,16 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void goAddNewItem(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddNewItem.fxml")));
+    public void AddNewItem(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddForm.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
-    public void goAddExistingItem(ActionEvent actionEvent) throws IOException {
+    public void AddExistingItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddExisting.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -132,13 +122,14 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void goAddItem(ActionEvent actionEvent) throws IOException {
+    public void AddItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
 
     public void goThird(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("third.fxml")));
@@ -152,20 +143,43 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partFor.getItems().addAll(partfor);
-        Company.getItems().addAll(companies);
-        prefix.getItems().addAll(pre);
+        Part_Type.getItems().addAll(partType);
     }
 
 
-String stockImage;
+
+    public void selectCompany() {
+        part = partFor.getValue();
+        if (part.equals("Rail")) {
+            Company.getItems().clear();
+            Company.getItems().addAll(Rail);
+        } else {
+            if (part.equals("Injector")) {
+                Company.getItems().clear();
+                Company.getItems().addAll(Injector);
+            } else {
+                if (part.equals("PUMP")) {
+                    Company.getItems().clear();
+                    Company.getItems().addAll(Pump);
+                } else {
+                    Company.getItems().clear();
+                    Company.getItems().addAll(MISC);
+                }
+            }
+
+        }
+
+    }
+
+    @FXML
+    private Button choose;
 
     public void singleFileChooser(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        File f = fc.showOpenDialog(null);
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", "*.jpg"));
+        File f = fc.showOpenDialog(null);
         if (f != null) {
             choose.setText(f.getAbsolutePath());
-            stockImage = f.getAbsolutePath();
         }
     }
 
@@ -177,7 +191,7 @@ String stockImage;
         stage.show();
     }
 
-    public void godeleteItem(ActionEvent actionEvent) throws IOException {
+    public void deleteItem(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Delete_Existing.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -185,7 +199,7 @@ String stockImage;
         stage.show();
     }
 
-    public void godeleteHistory(ActionEvent actionEvent) throws IOException {
+    public void deleteHistory(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DeleteItemHistory.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -201,520 +215,81 @@ String stockImage;
         stage.show();
     }
 
-    public void AddPart(ActionEvent actionEvent) {
-
-        boolean flag=false;
-//        Random rand= new Random();
-//
-//        UPC.setText(myString);
-        if (PartNumber.getText().length()==0 || Quantity.getText().length()==0 || InventoryDate.getValue()==null || SourceOfPurchase.getText().length()==0 || LandingValue.getText().length()==0 || SellValue.getText().length()==0 ) {
-            flag=true;
-
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-            Alert.AlertType type = Alert.AlertType.ERROR;
-            Alert alert = new Alert(type, "");
-
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
-
-            alert.getDialogPane().setContentText("Fill in details");
-
-            alert.getDialogPane().setHeaderText("the * marked fields are compulsory");
-            Optional<ButtonType> result = alert.showAndWait();
-        }
-
-        else if  (!flag) {
-
-            String quantity = Quantity.getText();
-            int l = quantity.length();
-            int ctr = 1;
-            int b = 1;
-            for (int i = 0; i < l; i++) {
-                if (quantity.charAt(i) >= '0' && quantity.charAt(i) <= '9') {
-                    ctr++;
-                } else {
-                    b = 0;
-                }
-            }
-            int ans = ctr * b;
-
-
-        String Partnumber = PartNumber.getText();
-        String RefPartNumber = ReferencePartNumber.getText();
-//        String quantity = Quantity.getText();
-        String addon = AddOn.getText();
-        String Sourceofpurchase = SourceOfPurchase.getText();
-        String landingValue= LandingValue.getText();
-        String sellvalue= SellValue.getText();
-        String PartFor = partFor.getValue();
-        String company = Company.getValue();
-        String inventoryDate = InventoryDate.getValue().toString();
-        String StockLocation = stockImage;
-        String Comment = "";
-
-        String setOf = "";
-        String Prefix = "";
-
-        PartFor = PartFor==null ? "" : PartFor.toString();
-        company = company==null ? "" : company.toString();
-        RefPartNumber = RefPartNumber==null ? "" : RefPartNumber.toString();
-
-//        Random rand= new Random();
-//        UPC.setText(myString);
-        if (ans != 0) {
-            try {
-
-                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-                Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-                Alert alert = new Alert(type, "");
-
-                alert.initModality(Modality.APPLICATION_MODAL);
-                alert.initOwner(stage);
-
-                alert.getDialogPane().setContentText("Do you want to confirm?");
-
-                alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-                Optional<ButtonType> result = alert.showAndWait();
-
-                if (result.get() == ButtonType.OK) {
-                    addData(Partnumber, RefPartNumber, addon, quantity, PartFor, company, inventoryDate, Sourceofpurchase, landingValue, sellvalue, StockLocation, setOf, Prefix, Comment);
-
-//                Code128Bean code128 = new Code128Bean();
-//                String myString = PartNumber.getText() ;
-//                String image_name = PartNumber.getText() + ".png";
-//                code128.setHeight(15f);
-//                code128.setModuleWidth(0.3);
-//                code128.setQuietZone(10);
-//                code128.doQuietZone(true);
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-//                code128.generateBarcode(canvas, myString);
-//                canvas.finish();
-//                //write to png file
-//                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
-//                fos.write(baos.toByteArray());
-//                fos.flush();
-//                fos.close();
-
-
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-                    stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
-
-            } catch (Exception e) {
-                // TODO: handle exception
-            }
-        }
-        else {
-                Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
-                Quantity.setText("*Enter digits from 0 to 9");
-            }
-        }
-    }
-    public void AddSystem(ActionEvent actionEvent) {
-        boolean flag = false;
-        if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null || SourceOfPurchase.getText().length() == 0 || LandingValue.getText().length() == 0 || SellValue.getText().length() == 0 || prefix.getValue() == null) {
-            flag = true;
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-            Alert.AlertType type = Alert.AlertType.ERROR;
-            Alert alert = new Alert(type, "");
-
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
-
-            alert.getDialogPane().setContentText("Fill in details");
-
-            alert.getDialogPane().setHeaderText("the * marked fields are compulsory");
-            Optional<ButtonType> result = alert.showAndWait();
-        } else if (!flag) {
-
-            String Partnumber = PartNumber.getText();
-            String RefPartNumber = ReferencePartNumber.getText();
-            String quantity = Quantity.getText();
-            int l = quantity.length();
-            int ctr = 1;
-            int b = 1;
-            for (int i = 0; i < l; i++) {
-                if (quantity.charAt(i) >= '0' && quantity.charAt(i) <= '9') {
-                    ctr++;
-                } else {
-                    b = 0;
-                }
-            }
-            int ans = ctr * b;
-
-//        String Partnumber = PartNumber.getText();
-//        String RefPartNumber = ReferencePartNumber.getText();
-//        String quantity = Quantity.getText();
-            String addon = AddOn.getText();
-            String Sourceofpurchase = SourceOfPurchase.getText();
-            String landingValue = LandingValue.getText();
-            String sellvalue = SellValue.getText();
-            String PartFor = partFor.getValue();
-            String company = Company.getValue();
-            String inventoryDate = InventoryDate.getValue().toString();
-            String StockLocation = stockImage;
-            String Comment = "";
-
-            String setOf = setof.getText();
-            String Prefix = prefix.getValue();
-
-            PartFor = PartFor == null ? "" : PartFor.toString();
-            company = company == null ? "" : company.toString();
-            RefPartNumber = RefPartNumber == null ? "" : RefPartNumber.toString();
-
-//        Random rand= new Random();
-//        UPC.setText(myString);
-            if (ans != 0) {
-                try {
-
-                    Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-                    Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-                    Alert alert = new Alert(type, "");
-
-                    alert.initModality(Modality.APPLICATION_MODAL);
-                    alert.initOwner(stage);
-
-                    alert.getDialogPane().setContentText("Do you want to confirm?");
-
-                    alert.getDialogPane().setHeaderText("You have given the correct information about the products. ");
-                    Optional<ButtonType> result = alert.showAndWait();
-
-                    if (result.get() == ButtonType.OK) {
-                        addData(Partnumber, RefPartNumber, addon, quantity, PartFor, company, inventoryDate, Sourceofpurchase, landingValue, sellvalue, StockLocation, setOf, Prefix, Comment);
-
-//                Code128Bean code128 = new Code128Bean();
-//                String myString = PartNumber.getText() ;
-//                String image_name = PartNumber.getText() + ".png";
-//                code128.setHeight(15f);
-//                code128.setModuleWidth(0.3);
-//                code128.setQuietZone(10);
-//                code128.doQuietZone(true);
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-//                code128.generateBarcode(canvas, myString);
-//                canvas.finish();
-//                //write to png file
-//                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
-//                fos.write(baos.toByteArray());
-//                fos.flush();
-//                fos.close();
-
-
-                        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-                        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
-                    }
-
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }
-            } else {
-                // Quantity.setVisible(true);
-                Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
-                Quantity.setText("*Enter digits from 0 to 9");
-            }
-        }
-    }
-
-    public void AddMisc(ActionEvent actionEvent) {
-        boolean flag = false;
-        if (PartNumber.getText().length() == 0 || Quantity.getText().length() == 0 || InventoryDate.getValue() == null ) {
-            flag = true;
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-            Alert.AlertType type = Alert.AlertType.ERROR;
-            Alert alert = new Alert(type, "");
-
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
-
-            alert.getDialogPane().setContentText("Fill in details");
-
-            alert.getDialogPane().setHeaderText("the * marked fields are compulsory");
-            Optional<ButtonType> result = alert.showAndWait();
-        } else if (!flag) {
-
-            String Partnumber = PartNumber.getText();
-            //String RefPartNumber = ReferencePartNumber.getText();
-            String quantity = Quantity.getText();
-            int l = quantity.length();
-            int ctr = 1;
-            int b = 1;
-            for (int i = 0; i < l; i++) {
-                if (quantity.charAt(i) >= '0' && quantity.charAt(i) <= '9') {
-                    ctr++;
-                } else {
-                    b = 0;
-                }
-            }
-            int ans = ctr * b;
-
-//        String Partnumber = "fhghjk5657";
-        String RefPartNumber = "";
-//        String quantity = Quantity.getText();
-        String addon = "";
-        String Sourceofpurchase = SourceOfPurchase.getText();
-        String landingValue= LandingValue.getText();
-        String sellvalue= SellValue.getText();
-        String PartFor = "";
-        String company = "";
-        String inventoryDate = InventoryDate.getValue().toString();
-        String StockLocation = stockImage;
-        String comment = MiscComment.getText();
-
-        String setOf = "";
-        String Prefix = "";
-
-//        Random rand= new Random();
-//        UPC.setText(myString);
-
-            if(ans!=0) {
-
-        try {
-
-            Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-            Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-            Alert alert = new Alert(type, "");
-
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.initOwner(stage);
-
-            alert.getDialogPane().setContentText("Do you want to confirm?");
-
-            alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-            Optional<ButtonType> result = alert.showAndWait();
-
-            if (result.get() == ButtonType.OK) {
-                addData(Partnumber,RefPartNumber,addon,quantity, PartFor, company,inventoryDate,Sourceofpurchase,landingValue,sellvalue, StockLocation, setOf, Prefix, comment);
-
-//                Code128Bean code128 = new Code128Bean();
-//                String myString = PartNumber.getText() ;
-//                String image_name = PartNumber.getText() + ".png";
-//                code128.setHeight(15f);
-//                code128.setModuleWidth(0.3);
-//                code128.setQuietZone(10);
-//                code128.doQuietZone(true);
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-//                code128.generateBarcode(canvas, myString);
-//                canvas.finish();
-//                //write to png file
-//                FileOutputStream fos = new FileOutputStream("C:\\Users\\4manm\\IdeaProjects\\GG\\INVENTORY\\Barcode\\Barcode" + image_name);
-//                fos.write(baos.toByteArray());
-//                fos.flush();
-//                fos.close();
-
-
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-                stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }
-
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    } else {
-                // Quantity.setVisible(true);
-                Quantity.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
-                Quantity.setText("*Enter digits from 0 to 9");
-            }
-        }
-    }
-
-    public void goDELETE_PUBLIC(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DELETE_PUBLIC.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void itemDetails() {
-        details.setVisible(true);
-    }
-
-    public void AddExisting(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-        Alert alert = new Alert(type, "");
-
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.initOwner(stage);
-
-        alert.getDialogPane().setContentText("Do you want to confirm?");
-
-        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddItem.fxml")));
-            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    public void DeleteExisting(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-        Alert alert = new Alert(type, "");
-
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.initOwner(stage);
-
-        alert.getDialogPane().setContentText("Do you want to confirm?");
-
-        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("delete.fxml")));
-            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-            public void DeleteHistory(ActionEvent actionEvent) throws IOException {
-                Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-                Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-                Alert alert = new Alert(type, "");
-
-                alert.initModality(Modality.APPLICATION_MODAL);
-                alert.initOwner(stage);
-
-                alert.getDialogPane().setContentText("Do you want to confirm?");
-
-                alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("delete.fxml")));
-                    stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
-    }
-
-    public void DeleteLog(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) myAnchorPane.getScene().getWindow();
-
-        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
-        Alert alert = new Alert(type, "");
-
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.initOwner(stage);
-
-        alert.getDialogPane().setContentText("Do you want to confirm?");
-
-        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
-            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    public void godeleteLog(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deleteLog.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void addData(String PartNumber,String ReferencePartNumber,String AddOn,String Quantity,String PartFor,String Company,String InventoryDate,String SourceOfPurchase,String LandingPurchaseValue,String SellValue,String StockLocation,String setof, String prefix, String Comment){
-
+//    public void GenerateBarCode(ActionEvent actionEvent) {
+//        try {
+//            Code128Bean code128 = new Code128Bean();
+//            String image_name=Productcode.getText()+".png";
+//            String myString=Productcode.getText();
+//            code128.setHeight(15f);
+//            code128.setModuleWidth(0.3);
+//            code128.setQuietZone(10);
+//            code128.doQuietZone(true);
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            BitmapCanvasProvider canvas = new BitmapCanvasProvider(baos, "image/x-png", 300, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+//            code128.generateBarcode(canvas, myString);
+//            canvas.finish();
+//            //write to png file
+//            FileOutputStream fos = new FileOutputStream("C:\\Users\\gopal2\\Downloads\\barcode4j" + image_name);
+//            fos.write(baos.toByteArray());
+//            fos.flush();
+//            fos.close();
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//        }
+//    }
+
+//    @FXML
+//    private AnchorPane myAnchorPane;
+
+    public void connectButton(ActionEvent event){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
+//        Stage stage=(Stage) myAnchorPane.getScene().getWindow();
 
-        String connectQuery1 = "INSERT INTO `inventory_management`.`inward_item` (`part_no`,\n" +
-                "`ref_part_no`,\n" +
-                "`add_on`,\n" +
-                "`quantity`,\n" +
-                "`part_for`,\n" +
-                "`company`,\n" +
-                "`inventory_date`,\n" +
-                "`source_of_p`,\n" +
-                "`landing_pv`,\n" +
-                "`sell_v`,\n" +
-                "`stock_loc`,\n" +
-                "`setof`,\n" +
-                "`prefix`,\n" +
-                "`comment`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+setof+"','"+prefix+"','"+Comment+"'"+")";
+//        Alert.AlertType type=Alert.AlertType.CONFIRMATION;
+//        Alert alert=new Alert(type,"");
+//
+//        alert.initModality(Modality.APPLICATION_MODAL);
+//        alert.initOwner(stage);
+//
+//        alert.getDialogPane().setContentText("Do you want to confirm?");
+//
+//        alert.getDialogPane().setHeaderText("You have given the correct information about the products.");
+//        Optional<ButtonType> result= alert.showAndWait();
+//        if(result.get()==ButtonType.OK)
+//        {
+//            System.out.println("Got it");
+//        }
+//        else if (result.get()==ButtonType.CANCEL){
+//            System.out.println("Cancelled");
+//        }
 
-        String connectQuery2 = "INSERT INTO `deletelog`.`deletemaster` (`part_no`,\n" +
-                "`ref_part_no`,\n" +
-                "`add_on`,\n" +
-                "`quantity`,\n" +
-                "`part_for`,\n" +
-                "`company`,\n" +
-                "`inventory_date`,\n" +
-                "`source_of_p`,\n" +
-                "`landing_pv`,\n" +
-                "`sell_v`,\n" +
-                "`stock_loc`,\n" +
-                "`setof`,\n" +
-                "`prefix`,\n" +
-                "`comment`) VALUES ('"+PartNumber+"','"+ReferencePartNumber+"','"+AddOn+"','"+Quantity+"','"+PartFor+"','"+Company+"','"+InventoryDate+"','"+SourceOfPurchase+"','"+LandingPurchaseValue+"','"+SellValue+"','"+StockLocation+"','"+setof+"','"+prefix+"','"+Comment+"'"+")";
+        String ProdCode = Productcode.getText();
+        String PartFor = partFor.getValue().toString();
+        String TypeOfPart = Part_Type.getValue().toString();
+        String company = Company.getValue().toString();
+        String ManufactureDate = mfd.getValue().toString();
+        String StockLocation = "pta nhi";
+        String LastDate = lastDate.getValue().toString();
+        String TechDetails = techDetails.getText();
+        String Comment = comment.getText();
+
+        //    ProductCode PartType partFor Company mfd lastDate techDetails comment
+        String connectQuery = "INSERT INTO `inventory_management`.`product_details` VALUES ("+ProdCode+",'"+PartFor+"','"+TypeOfPart+"','"+company+"','"+ManufactureDate+"','"+LastDate+"','"+StockLocation+"','"+TechDetails+"','"+Comment+"'"+")";
+//        System.out.print(connectQuery);
+
         try{
             Statement statement = connectDB.createStatement();
-            statement.executeUpdate(connectQuery1);
-            statement.executeUpdate(connectQuery2);
+            statement.executeUpdate(connectQuery);
+//            ResultSet queryOutput = statement.executeUpdate(connectQuery);
+
+//            while(queryOutput.next()){
+//
+//                showDetails.setText(queryOutput.getString("prod_code"));
+////                System.out.println(queryOutput.getString("prod_code"));
+//            }
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+             e.printStackTrace();
+          }
     }
-
-    public void goAddNewMISC(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormMISC.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goAddNewPart(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormPart.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goAddNewSystem(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddFormSystem.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void monthlylog(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("monthly log.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
 }

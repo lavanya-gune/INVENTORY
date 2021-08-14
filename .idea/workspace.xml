@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="" />
+    <list default="true" id="2dba539b-8281-4a89-9bc4-6cae48c6a378" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INVENTORY.iml" beforeDir="false" afterPath="$PROJECT_DIR$/INVENTORY.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddNewItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/AddNewItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DELETE_PUBLIC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DELETE_PUBLIC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DatabaseConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DatabaseConnectionDelete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DatabaseConnectionDelete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DatabaseConnectionNext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DatabaseConnectionNext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteItemHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteLogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/DeleteTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Delete_Existing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/SearchTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/addExistingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/addExistingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/deleteLog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/deleteLog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/modelTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/modelTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/monthly log.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/monthly log.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/monthlyLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/monthlyLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INVENTORY/sample/third.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddExisting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddExisting.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormMISC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddFormSystem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/AddNewItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/AddNewItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DELETE_PUBLIC.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DELETE_PUBLIC.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnectionDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseConnectionDelete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnectionNext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseConnectionNext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteItemHistory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DeleteTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DeleteTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Delete_Existing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/addExistingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/addExistingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/deleteLog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/deleteLog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/modelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/modelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/monthly log.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/monthly log.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/monthlyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/monthlyLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/third.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/third.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +96,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.25.jar" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.18358831" />
     <property name="project.structure.side.proportion" value="0.2" />

@@ -22,15 +22,15 @@
     <children>
         <Label alignment="CENTER" prefHeight="59.0" prefWidth="495.0" text="ENTER PASSWORD" GridPane.rowIndex="1">
             <font>
-                <Font name="Arial" size="46.0" />
+                <Font name="Arial" size="37.0" />
             </font>
         </Label>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
             <children>
-                <PasswordField fx:id="password" layoutX="431.0" layoutY="14.0" prefHeight="35.0" prefWidth="427.0" style="-fx-background-color: #F1F1E6;" />
-                <Button fx:id="submit" layoutX="554.0" layoutY="81.0" mnemonicParsing="false" onAction="#checkLogin" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
+                <PasswordField fx:id="password" layoutX="470.0" layoutY="14.0" prefHeight="35.0" prefWidth="346.0" style="-fx-background-color: #F1F1E6;" />
+                <Button fx:id="submit" layoutX="570.0" layoutY="95.0" mnemonicParsing="false" onAction="#checkLogin" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #005575;" text="SUBMIT" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="22.0" />
+                        <Font name="Arial" size="15.0" />
                     </font>
                 </Button>
                 <Label fx:id="wrong" alignment="CENTER" contentDisplay="CENTER" layoutX="518.0" layoutY="58.0" prefHeight="17.0" prefWidth="188.0" text="WRONG PASSWORD" textAlignment="CENTER" textFill="#ff0900" visible="false">
@@ -43,11 +43,6 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <Button fx:id="back" mnemonicParsing="false" onAction="#goSample" prefHeight="46.0" prefWidth="115.0" style="-fx-background-color: #C4FCF0;" text="&lt;- BACK" textAlignment="JUSTIFY" textFill="#005575">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Button>
-            <Button fx:id="HOME" layoutX="1193.0" layoutY="-3.0" mnemonicParsing="false" onAction="#goSample" prefHeight="46.0" prefWidth="100.0" style="-fx-background-color: #C4FCF0;" text="HOME" textAlignment="JUSTIFY" textFill="#005575">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
